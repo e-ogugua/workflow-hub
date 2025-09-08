@@ -1,0 +1,22 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    name: Run CI/CD Pipeline
+    uses: e-ogugua/.github/.github/workflows/ci-cd.reusable.yml@main
+    with:
+      node-version: '20'
+      pkg-manager: 'npm'
+      install-command: 'ci'
+      build-command: 'build'
+      test-command: 'test'
+      lint-command: 'lint'
+      deploy-command: 'deploy'
+    secrets: inherit
