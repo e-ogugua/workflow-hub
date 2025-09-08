@@ -1,0 +1,102 @@
+name: Monitoring and Alerting
+
+on:
+  # Run on a schedule (every 5 minutes)
+  schedule:
+    - cron: '*/5 * * * *'
+  # Allow manual triggers
+  workflow_dispatch:
+  # Trigger on deployment status changes
+  deployment_status:
+    types: [created, success, failure]
+
+jobs:
+  monitor-deployments:
+    name: Monitor Deployments
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install -g vercel
+      
+      - name: Check deployments
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          # Get list of all Vercel projects
+          PROJECTS=$(vercel ls --json)
+          
+          # Check status of each project
+          echo "$PROJECTS" | jq -c '.[]' | while read -r project; do
+            PROJECT_NAME=$(echo "$project" | jq -r '.name')
+            PROJECT_URL=$(echo "$project" | jq -r '.url')
+            
+            # Check if the deployment is healthy
+            STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$PROJECT_URL")
+            
+            if [ "$STATUS_CODE" -ne 200 ]; then
+              # Send alert if the site is down
+              echo "❌ $PROJECT_NAME is down with status code $STATUS_CODE"
+              # Here you would typically send an alert (e.g., via email, Slack, etc.)
+              # Example: curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"❌ $PROJECT_NAME is down with status code $STATUS_CODE\"}" $SLACK_WEBHOOK_URL
+            else
+              echo "✅ $PROJECT_NAME is up and running"
+            fi
+          done
+      
+      - name: Check for failed deployments
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          # Get list of recent deployments
+          DEPLOYMENTS=$(vercel list --timeout=30)
+          
+          # Check for failed deployments in the last hour
+          FAILED_DEPLOYMENTS=$(echo "$DEPLOYMENTS" | grep -i 'failed\|error' | grep -v '\[inactive\]')
+          
+          if [ -n "$FAILED_DEPLOYMENTS" ]; then
+            echo "❌ Found failed deployments:"
+            echo "$FAILED_DEPLOYMENTS"
+            # Here you would typically send an alert
+            # Example: curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"❌ Failed deployments detected: $FAILED_DEPLOYMENTS\"}" $SLACK_WEBHOOK_URL
+          else
+            echo "✅ No failed deployments found"
+          fi
+
+  check-uptime:
+    name: Check Uptime
+    runs-on: ubuntu-latest
+    needs: monitor-deployments
+    steps:
+      - name: Check application uptime
+        uses: LouisBrunner/checks-action@v1
+        with:
+          tool: 'uptime'
+          args: 'https://${{ github.repository }}.vercel.app'  # Replace with your actual domain
+        continue-on-error: true
+
+  send-alerts:
+    name: Send Alerts
+    runs-on: ubuntu-latest
+    needs: [monitor-deployments, check-uptime]
+    if: always()
+    steps:
+      - name: Send summary notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_COLOR: "#36a64f"
+          SLACK_TITLE: "Deployment Monitoring Summary"
+          SLACK_MESSAGE: "Monitoring checks completed for all applications"
+          SLACK_FOOTER: "$(date)"
