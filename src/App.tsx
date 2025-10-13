@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react'
+import React, { useState, useCallback, useMemo, useRef, Suspense, lazy } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -6,24 +6,51 @@ import Categories from './components/Categories'
 import ToolsGrid from './components/ToolsGrid'
 import ToolComparison from './components/ToolComparison'
 import ContentHub from './components/ContentHub'
-import ToolDetail from './components/ToolDetail'
-import ContentDetail from './components/ContentDetail'
 import Footer from './components/Footer'
 import { aiTools, categories, Tool } from './data/tools'
 import { Layers, Users, TrendingUp, ArrowUpDown, Star, GitCompare, Sparkles } from 'lucide-react'
 
-// Simple debounce hook
-function useDebounce(callback: (value: string) => void, delay: number) {
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+// Lazy load components for code splitting
+const ToolDetail = lazy(() => import('./components/ToolDetail'))
+const ContentDetail = lazy(() => import('./components/ContentDetail'))
 
-  return useCallback((value: string) => {
+// Loading component
+const LoadingSpinner = () => (
+  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white flex items-center justify-center">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-ai-primary mx-auto mb-4"></div>
+      <p className="text-xl">Loading...</p>
+    </div>
+  </div>
+)
+
+// Enhanced debounce hook with cleanup
+function useDebounce<T extends (...args: never[]) => void>(callback: T, delay: number): T {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const callbackRef = useRef(callback)
+
+  // Keep callback ref updated
+  callbackRef.current = callback
+
+  const debouncedFn = useCallback((...args: Parameters<T>) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
     }
     timeoutRef.current = setTimeout(() => {
-      callback(value)
+      callbackRef.current(...args)
     }, delay)
-  }, [callback, delay])
+  }, [delay]) as T
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  return debouncedFn
 }
 
 type SortOption = 'name' | 'rating' | 'users' | 'pricing'
@@ -42,11 +69,14 @@ function App() {
     setSearchTerm(value)
   }, 300)
 
-  const handleSearchChange = (value: string) => {
+  const handleSearchChange = useCallback((value: string) => {
     debouncedSearch(value)
-  }
+  }, [debouncedSearch])
 
+  // Memoized filtered and sorted tools
   const filteredAndSortedTools = useMemo(() => {
+    if (!aiTools?.length) return []
+
     let filtered = aiTools.filter(tool => {
       const matchesCategory = activeCategory === 'all' || tool.category === activeCategory
       const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -91,53 +121,65 @@ function App() {
     return filtered
   }, [activeCategory, searchTerm, sortBy, sortOrder])
 
-  const stats = [
-    { label: 'Premium AI Tools', value: aiTools.length.toString(), icon: Sparkles },
-    { label: 'Categories', value: categories.length.toString(), icon: Layers },
+  // Memoized stats
+  const stats = useMemo(() => [
+    { label: 'Premium AI Tools', value: aiTools?.length?.toString() || '0', icon: Sparkles },
+    { label: 'Categories', value: categories?.length?.toString() || '0', icon: Layers },
     { label: 'Happy Users', value: '50K+', icon: Users },
     { label: 'Success Rate', value: '99%', icon: TrendingUp }
-  ]
+  ], [])
 
-  const handleSubmitTool = () => {
-    // Enhanced tool submission with user feedback
+  // Optimized event handlers
+  const handleSubmitTool = useCallback(() => {
     alert('Thank you for your interest! Tool submission feature coming soon. Please check back later.')
-  }
+  }, [])
 
-  const handleSort = (option: SortOption) => {
-    if (sortBy === option) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortBy(option)
-      setSortOrder('asc')
-    }
-  }
+  const handleSort = useCallback((option: SortOption) => {
+    setSortBy(prev => {
+      if (prev === option) {
+        setSortOrder(order => order === 'asc' ? 'desc' : 'asc')
+        return prev
+      } else {
+        setSortOrder('asc')
+        return option
+      }
+    })
+  }, [])
 
-  const handleAddToComparison = (tool: Tool) => {
-    if (comparisonTools.length < 4 && !comparisonTools.find(t => t.id === tool.id)) {
-      setComparisonTools([...comparisonTools, tool])
-    }
-  }
+  const handleAddToComparison = useCallback((tool: Tool) => {
+    setComparisonTools(prev => {
+      if (prev.length < 4 && !prev.find(t => t.id === tool.id)) {
+        return [...prev, tool]
+      }
+      return prev
+    })
+  }, [])
 
-  const handleRemoveFromComparison = (toolId: number) => {
-    setComparisonTools(comparisonTools.filter(tool => tool.id !== toolId))
-  }
+  const handleRemoveFromComparison = useCallback((toolId: number) => {
+    setComparisonTools(prev => prev.filter(tool => tool.id !== toolId))
+  }, [])
 
-  const handleCloseComparison = () => {
+  const handleCloseComparison = useCallback(() => {
     setShowComparison(false)
-  }
+  }, [])
 
-  const openComparison = () => {
+  const openComparison = useCallback(() => {
     if (comparisonTools.length > 0) {
       setShowComparison(true)
     }
-  }
+  }, [comparisonTools.length])
 
-  const handleToolClick = (tool: Tool) => {
+  const handleToolClick = useCallback((tool: Tool) => {
     navigate(`/tool/${tool.id}`)
-  }
+  }, [navigate])
 
-  const handleContentClick = (contentId: number) => {
+  const handleContentClick = useCallback((contentId: number) => {
     navigate(`/content/${contentId}`)
+  }, [navigate])
+
+  // Error boundary for better error handling
+  if (!aiTools || !categories) {
+    return <LoadingSpinner />
   }
 
   return (
@@ -225,31 +267,35 @@ function App() {
           </>
         } />
         <Route path="/tool/:id" element={
-          <ToolDetail
-            tool={aiTools.find(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0')) || aiTools[0]}
-            onBack={() => navigate('/')}
-            onAddToComparison={handleAddToComparison}
-            isInComparison={comparisonTools.some(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0'))}
-          />
+          <Suspense fallback={<LoadingSpinner />}>
+            <ToolDetail
+              tool={aiTools.find(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0')) || aiTools[0]}
+              onBack={() => navigate('/')}
+              onAddToComparison={handleAddToComparison}
+              isInComparison={comparisonTools.some(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0'))}
+            />
+          </Suspense>
         } />
         <Route path="/content/:id" element={
-          <ContentDetail
-            content={{
-              id: 1,
-              title: 'Getting Started with AI Tools',
-              type: 'tutorial',
-              category: 'General',
-              description: 'A comprehensive guide to getting started with AI tools for beginners.',
-              readTime: '15 min',
-              difficulty: 'Beginner',
-              rating: 4.7,
-              author: 'Workflow Hub Team',
-              tags: ['AI', 'Beginner', 'Tutorial'],
-              content: 'Full article content here...',
-              publishedDate: '2025-01-15'
-            }}
-            onBack={() => navigate('/')}
-          />
+          <Suspense fallback={<LoadingSpinner />}>
+            <ContentDetail
+              content={{
+                id: 1,
+                title: 'Getting Started with AI Tools',
+                type: 'tutorial',
+                category: 'General',
+                description: 'A comprehensive guide to getting started with AI tools for beginners.',
+                readTime: '15 min',
+                difficulty: 'Beginner',
+                rating: 4.7,
+                author: 'Workflow Hub Team',
+                tags: ['AI', 'Beginner', 'Tutorial'],
+                content: 'Full article content here...',
+                publishedDate: '2025-01-15'
+              }}
+              onBack={() => navigate('/')}
+            />
+          </Suspense>
         } />
       </Routes>
 

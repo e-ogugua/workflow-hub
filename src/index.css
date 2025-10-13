@@ -111,6 +111,29 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #6366F1; /* fallback for browsers that don't support background-clip */
+}
+
+/* Enhanced gradient text with better browser support */
+.gradient-text-enhanced {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+}
+
+.gradient-text-enhanced::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -1;
 }
 
 /* Floating animation for decorative elements */

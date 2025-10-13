@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Cpu, Sparkles, Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 interface HeaderProps {
   onSubmitTool: () => void
@@ -10,6 +10,8 @@ interface HeaderProps {
 export default function Header({ onSubmitTool }: HeaderProps) {
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleNavClick = (sectionId: string) => {
     if (location.pathname === '/') {
@@ -29,18 +31,43 @@ export default function Header({ onSubmitTool }: HeaderProps) {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
+  // Handle escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isMobileMenuOpen])
+
+  // Focus management for mobile menu
+  useEffect(() => {
+    if (isMobileMenuOpen && mobileMenuRef.current) {
+      const firstFocusableElement = mobileMenuRef.current.querySelector('button')
+      firstFocusableElement?.focus()
+    }
+  }, [isMobileMenuOpen])
+
   return (
     <motion.header
       className="sticky top-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
+      role="banner"
     >
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link
+            to="/"
+            className="flex items-center space-x-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary rounded-lg"
+            aria-label="Workflow Hub - Home"
+          >
             <div className="w-10 h-10 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Cpu className="w-6 h-6 text-white" />
+              <Cpu className="w-6 h-6 text-white" aria-hidden="true" />
             </div>
             <div>
               <h1 className="text-2xl font-bold font-serif gradient-text group-hover:scale-105 transition-transform duration-300">
@@ -51,19 +78,20 @@ export default function Header({ onSubmitTool }: HeaderProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
             {[
-              { id: 'tools', label: 'Tools', icon: Cpu },
-              { id: 'categories', label: 'Categories', icon: Sparkles },
-              { id: 'trending', label: 'Trending', icon: Cpu },
-              { id: 'about', label: 'About', icon: Cpu }
-            ].map(({ id, label, icon: Icon }) => (
+              { id: 'tools', label: 'Tools', icon: Cpu, ariaLabel: 'Browse AI tools' },
+              { id: 'categories', label: 'Categories', icon: Sparkles, ariaLabel: 'Browse tool categories' },
+              { id: 'trending', label: 'Trending', icon: Cpu, ariaLabel: 'View trending tools' },
+              { id: 'about', label: 'About', icon: Cpu, ariaLabel: 'About Workflow Hub' }
+            ].map(({ id, label, icon: Icon, ariaLabel }) => (
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-all duration-300 relative overflow-hidden"
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
+                aria-label={ariaLabel}
               >
-                <Icon className="w-4 h-4" />
+                <Icon className="w-4 h-4" aria-hidden="true" />
                 <span className="font-medium">{label}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-ai-primary/0 to-ai-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
@@ -74,24 +102,29 @@ export default function Header({ onSubmitTool }: HeaderProps) {
             {/* Submit Tool Button */}
             <motion.button
               onClick={onSubmitTool}
-              className="btn-primary bg-gradient-to-r from-ai-primary to-ai-secondary hover:from-ai-secondary hover:to-ai-accent px-6 py-2.5 rounded-xl font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+              className="btn-primary bg-gradient-to-r from-ai-primary to-ai-secondary hover:from-ai-secondary hover:to-ai-accent px-6 py-2.5 rounded-xl font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Submit a new AI tool to our directory"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>Submit Tool</span>
             </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
+              ref={menuButtonRef}
               onClick={toggleMobileMenu}
-              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
               whileTap={{ scale: 0.95 }}
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6" aria-hidden="true" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6" aria-hidden="true" />
               )}
             </motion.button>
           </div>
@@ -99,6 +132,8 @@ export default function Header({ onSubmitTool }: HeaderProps) {
 
         {/* Mobile Navigation Menu */}
         <motion.div
+          ref={mobileMenuRef}
+          id="mobile-navigation"
           className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} mt-4`}
           initial={{ opacity: 0, height: 0 }}
           animate={{
@@ -106,21 +141,25 @@ export default function Header({ onSubmitTool }: HeaderProps) {
             height: isMobileMenuOpen ? 'auto' : 0
           }}
           transition={{ duration: 0.3 }}
+          role="navigation"
+          aria-label="Mobile navigation"
         >
           <div className="glass rounded-xl p-4 border border-white/10">
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-3" role="menubar">
               {[
-                { id: 'tools', label: 'Tools', icon: Cpu },
-                { id: 'categories', label: 'Categories', icon: Sparkles },
-                { id: 'trending', label: 'Trending', icon: Cpu },
-                { id: 'about', label: 'About', icon: Cpu }
-              ].map(({ id, label, icon: Icon }) => (
+                { id: 'tools', label: 'Tools', icon: Cpu, ariaLabel: 'Browse AI tools' },
+                { id: 'categories', label: 'Categories', icon: Sparkles, ariaLabel: 'Browse tool categories' },
+                { id: 'trending', label: 'Trending', icon: Cpu, ariaLabel: 'View trending tools' },
+                { id: 'about', label: 'About', icon: Cpu, ariaLabel: 'About Workflow Hub' }
+              ].map(({ id, label, icon: Icon, ariaLabel }) => (
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-colors text-left"
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
+                  role="menuitem"
+                  aria-label={ariaLabel}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-5 h-5" aria-hidden="true" />
                   <span className="font-medium">{label}</span>
                 </button>
               ))}
