@@ -1,7 +1,7 @@
 {
   "name": "workflow-hub",
   "version": "1.0.0",
-  "description": "AI Utility Hub - Comprehensive collection of tools, utilities, and productivity features for modern workflows",
+  "description": "Workflow Hub - Comprehensive collection of tools, utilities, and productivity features for modern workflows",
   "author": "Emmanuel Chukwuka Ogugua <emmachuka@gmail.com>",
   "license": "MIT",
   "private": true,

@@ -20,7 +20,7 @@ export default function Header({ onSubmitTool }: HeaderProps) {
               <Cpu className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold font-serif">AI Utility Hub</h1>
+              <h1 className="text-2xl font-bold font-serif">Workflow Hub</h1>
               <p className="text-sm text-ai-primary">AI Tools Collection</p>
             </div>
           </div>

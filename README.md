@@ -1,4 +1,4 @@
-# 🚀 AI Utility Hub
+# 🚀 Workflow Hub
 
 A comprehensive and user-friendly web application showcasing a curated collection of cutting-edge AI tools and utilities. Designed to help developers, content creators, and tech enthusiasts discover, compare, and utilize solutions for enhanced productivity and creativity.
 

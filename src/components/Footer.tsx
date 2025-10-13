@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Cpu className="w-6 h-6 text-ai-primary" />
-              <span className="font-bold">AI Utility Hub</span>
+              <span className="font-bold">Workflow Hub</span>
             </div>
             <p className="text-gray-300 text-sm mb-4">
               Your comprehensive destination for discovering and utilizing the latest AI tools and technologies.
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-300 text-sm">
-          <p>&copy; 2025 AI Utility Hub by Emmanuel Chukwuka Ogugua. Part of EmmanuelOS Digital Empire.</p>
+          <p>&copy; 2025 Workflow Hub by Emmanuel Chukwuka Ogugua. Part of EmmanuelOS Digital Empire.</p>
         </div>
       </div>
     </motion.footer>
