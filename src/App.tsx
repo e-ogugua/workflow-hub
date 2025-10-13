@@ -195,14 +195,23 @@ function App() {
               </div>
             </div>
 
-            <ToolsGrid
-              tools={filteredAndSortedTools}
-              onTryNow={handleToolClick}
-              onAddToComparison={handleAddToComparison}
-              comparisonTools={comparisonTools}
-            />
-            <ContentHub onContentClick={handleContentClick} />
-            <Footer />
+            <div id="tools">
+              <ToolsGrid
+                tools={filteredAndSortedTools}
+                onTryNow={handleToolClick}
+                onAddToComparison={handleAddToComparison}
+                comparisonTools={comparisonTools}
+              />
+            </div>
+            <div id="categories">
+              <ContentHub onContentClick={handleContentClick} />
+            </div>
+            <div id="trending">
+              <Footer />
+            </div>
+            <div id="about">
+              {/* About section - could add more content here */}
+            </div>
           </>
         } />
         <Route path="/tool/:id" element={
