@@ -68,10 +68,10 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
               id="hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              <span className="gradient-text">Discover AI</span>
+              <span className="gradient-text">Discover Premium</span>
               <br />
               <span className="relative">
-                <span className="gradient-text">Innovation</span>
+                <span className="gradient-text">Innovations</span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-full"
                   initial={{ scaleX: 0 }}
