@@ -1,4 +1,4 @@
-# ai-utility-hub
+# Workflow-hub
 
 ai-utility-hub - Part of the EmmanuelOS ecosystem
 
