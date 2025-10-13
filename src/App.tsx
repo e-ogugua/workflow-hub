@@ -264,6 +264,9 @@ function App() {
             <div id="trending">
               <Footer />
             </div>
+            <div id="about">
+              {/* About section - brief company information */}
+            </div>
           </>
         } />
         <Route path="/tool/:id" element={

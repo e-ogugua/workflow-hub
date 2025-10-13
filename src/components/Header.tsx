@@ -18,7 +18,9 @@ export default function Header({ onSubmitTool }: HeaderProps) {
       // If we're on the main page, scroll to the section
       const element = document.getElementById(sectionId)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        console.warn(`Section with id "${sectionId}" not found`)
       }
     } else {
       // If we're on a different page, navigate to main page and scroll
@@ -88,7 +90,11 @@ export default function Header({ onSubmitTool }: HeaderProps) {
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
+                className={`group flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary ${
+                  location.pathname === '/' && location.hash === `#${id}`
+                    ? 'bg-ai-primary/20 text-ai-primary border border-ai-primary/30'
+                    : 'hover:bg-white/10 hover:text-ai-primary'
+                }`}
                 aria-label={ariaLabel}
               >
                 <Icon className="w-4 h-4" aria-hidden="true" />
@@ -155,7 +161,11 @@ export default function Header({ onSubmitTool }: HeaderProps) {
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-white/10 hover:text-ai-primary transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary ${
+                    location.pathname === '/' && location.hash === `#${id}`
+                      ? 'bg-ai-primary/20 text-ai-primary border border-ai-primary/30'
+                      : 'hover:bg-white/10 hover:text-ai-primary'
+                  }`}
                   role="menuitem"
                   aria-label={ariaLabel}
                 >
