@@ -37,4 +37,21 @@ export default [
       'no-undef': 'off', // TypeScript handles this better
     },
   },
+  {
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        ...globals.jest, // Add Jest globals for test files
+      },
+      parser: tsParser,
+    },
+    files: ['tests/**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      '@typescript-eslint': typescript,
+    },
+    rules: {
+      ...typescript.configs.recommended.rules,
+    },
+  },
 ]

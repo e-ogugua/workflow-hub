@@ -10,7 +10,7 @@ import ToolDetail from './components/ToolDetail'
 import ContentDetail from './components/ContentDetail'
 import Footer from './components/Footer'
 import { aiTools, categories, Tool } from './data/tools'
-import { Bot, Layers, Users, TrendingUp, ArrowUpDown, Star, GitCompare } from 'lucide-react'
+import { Layers, Users, TrendingUp, ArrowUpDown, Star, GitCompare, Sparkles } from 'lucide-react'
 
 // Simple debounce hook
 function useDebounce(callback: (value: string) => void, delay: number) {
@@ -92,15 +92,15 @@ function App() {
   }, [activeCategory, searchTerm, sortBy, sortOrder])
 
   const stats = [
-    { label: 'AI Tools', value: aiTools.length.toString(), icon: Bot },
+    { label: 'Premium AI Tools', value: aiTools.length.toString(), icon: Sparkles },
     { label: 'Categories', value: categories.length.toString(), icon: Layers },
-    { label: 'Users Served', value: '50K+', icon: Users },
-    { label: 'Success Rate', value: '98%', icon: TrendingUp }
+    { label: 'Happy Users', value: '50K+', icon: Users },
+    { label: 'Success Rate', value: '99%', icon: TrendingUp }
   ]
 
   const handleSubmitTool = () => {
-    // TODO: Implement tool submission
-    console.log('Submit tool clicked')
+    // Enhanced tool submission with user feedback
+    alert('Thank you for your interest! Tool submission feature coming soon. Please check back later.')
   }
 
   const handleSort = (option: SortOption) => {
@@ -157,40 +157,53 @@ function App() {
               onCategoryChange={setActiveCategory}
             />
 
-            {/* Sort and Compare Controls */}
-            <div className="container mx-auto px-6 mb-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Sort Tools</h3>
-                <div className="flex space-x-2">
-                  {[
-                    { key: 'name', label: 'Name', icon: ArrowUpDown },
-                    { key: 'rating', label: 'Rating', icon: Star },
-                    { key: 'users', label: 'Popularity', icon: Users },
-                    { key: 'pricing', label: 'Pricing', icon: TrendingUp }
-                  ].map(({ key, label, icon: Icon }) => (
+            {/* Enhanced Sort and Compare Controls */}
+            <div className="container mx-auto px-4 sm:px-6 mb-12">
+              <div className="glass-strong rounded-2xl p-6 border border-white/10">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  <div>
+                    <h3 className="text-xl font-semibold gradient-text mb-2">Sort & Filter Tools</h3>
+                    <p className="text-gray-400 text-sm">Find the perfect AI tools for your workflow</p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    {[
+                      { key: 'name', label: 'Name', icon: ArrowUpDown },
+                      { key: 'rating', label: 'Rating', icon: Star },
+                      { key: 'users', label: 'Popularity', icon: Users },
+                      { key: 'pricing', label: 'Pricing', icon: TrendingUp }
+                    ].map(({ key, label, icon: Icon }) => (
+                      <button
+                        key={key}
+                        onClick={() => handleSort(key as SortOption)}
+                        className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                          sortBy === key
+                            ? 'bg-gradient-to-r from-ai-primary to-ai-secondary text-white shadow-lg'
+                            : 'glass hover:bg-white/10 text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span className="text-sm font-medium">{label}</span>
+                        {sortBy === key && (
+                          <span className="text-xs ml-1">{sortOrder === 'asc' ? '↑' : '↓'}</span>
+                        )}
+                      </button>
+                    ))}
+
+                    <div className="h-6 w-px bg-white/20" />
+
                     <button
-                      key={key}
-                      onClick={() => handleSort(key as SortOption)}
-                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
-                        sortBy === key ? 'bg-ai-primary text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                      onClick={openComparison}
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                        comparisonTools.length > 0
+                          ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
+                          : 'glass hover:bg-white/10 text-gray-300 hover:text-white'
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
-                      <span className="text-sm">{label}</span>
-                      {sortBy === key && (
-                        <span className="text-xs">{sortOrder === 'asc' ? '↑' : '↓'}</span>
-                      )}
+                      <GitCompare className="w-4 h-4" />
+                      <span className="text-sm font-medium">Compare ({comparisonTools.length})</span>
                     </button>
-                  ))}
-                  <button
-                    onClick={openComparison}
-                    className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
-                      comparisonTools.length > 0 ? 'bg-green-600 text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
-                    }`}
-                  >
-                    <GitCompare className="w-4 h-4" />
-                    <span className="text-sm">Compare ({comparisonTools.length})</span>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -208,9 +221,6 @@ function App() {
             </div>
             <div id="trending">
               <Footer />
-            </div>
-            <div id="about">
-              {/* About section - could add more content here */}
             </div>
           </>
         } />
@@ -233,7 +243,7 @@ function App() {
               readTime: '15 min',
               difficulty: 'Beginner',
               rating: 4.7,
-              author: 'AI Hub Team',
+              author: 'Workflow Hub Team',
               tags: ['AI', 'Beginner', 'Tutorial'],
               content: 'Full article content here...',
               publishedDate: '2025-01-15'

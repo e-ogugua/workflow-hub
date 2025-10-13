@@ -1,7 +1,7 @@
 {
   "name": "workflow-hub",
-  "version": "1.0.0",
-  "description": "Workflow Hub - Comprehensive collection of tools, utilities, and productivity features for modern workflows",
+  "version": "2.0.0",
+  "description": "Workflow Hub - Premium AI Tools Collection. Discover, compare, and access cutting-edge AI tools for productivity, creativity, and business growth.",
   "author": "Emmanuel Chukwuka Ogugua <emmachuka@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -59,5 +59,17 @@
     "type": "git",
     "url": "https://github.com/e-ogugua/workflow-hub.git"
   },
-  "homepage": "https://ai-utility-hub.e.ogugua.dev"
+  "homepage": "https://workflow-hub-psi.vercel.app/",
+  "keywords": [
+    "ai-tools",
+    "artificial-intelligence",
+    "productivity",
+    "workflow-automation",
+    "machine-learning",
+    "ai-directory",
+    "ai-discovery-platform",
+    "react",
+    "typescript",
+    "vite"
+  ]
 }
