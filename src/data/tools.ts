@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   MessageSquare,
   Image,
@@ -28,7 +29,7 @@ export interface Tool {
   users: string
   pricing: string
   features: string[]
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
   color: string
   demoUrl?: string
   tags?: string[]

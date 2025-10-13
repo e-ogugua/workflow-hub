@@ -13,17 +13,17 @@ import { aiTools, categories, Tool } from './data/tools'
 import { Bot, Layers, Users, TrendingUp, ArrowUpDown, Star, GitCompare } from 'lucide-react'
 
 // Simple debounce hook
-function useDebounce<T extends (...args: any[]) => any>(callback: T, delay: number): T {
+function useDebounce(callback: (value: string) => void, delay: number) {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  return useCallback((...args: Parameters<T>) => {
+  return useCallback((value: string) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
     }
     timeoutRef.current = setTimeout(() => {
-      callback(...args)
+      callback(value)
     }, delay)
-  }, [callback, delay]) as T
+  }, [callback, delay])
 }
 
 type SortOption = 'name' | 'rating' | 'users' | 'pricing'
@@ -55,6 +55,7 @@ function App() {
     })
 
     // Sort tools
+    const pricingOrder = { 'Free': 1, 'Freemium': 2, 'Paid': 3 }
     filtered.sort((a, b) => {
       let aValue: string | number
       let bValue: string | number
@@ -73,7 +74,6 @@ function App() {
           bValue = parseInt(b.users.replace(/[^0-9]/g, '')) || 0
           break
         case 'pricing':
-          const pricingOrder = { 'Free': 1, 'Freemium': 2, 'Paid': 3 }
           aValue = pricingOrder[a.pricing as keyof typeof pricingOrder] || 4
           bValue = pricingOrder[b.pricing as keyof typeof pricingOrder] || 4
           break

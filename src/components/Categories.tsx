@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
+import React from 'react'
 
 interface Category {
   id: string
   name: string
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
 }
 
 interface CategoriesProps {

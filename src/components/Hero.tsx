@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import { Search, Sparkles, Wand2 } from 'lucide-react'
+import React from 'react'
 
 interface HeroProps {
   searchTerm: string
   onSearchChange: (value: string) => void
-  stats: Array<{ label: string; value: string; icon: any }>
+  stats: Array<{ label: string; value: string; icon: React.ComponentType<{ className?: string }> }>
 }
 
 export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {

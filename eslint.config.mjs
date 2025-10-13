@@ -18,12 +18,13 @@ export default [
     ignores: [
       'dist/**',
       'node_modules/**',
-      'monitoring.config.js',
+      'monitoring.config.json',
       'pages/**',
       'tests/**',
       'coverage/**',
       '.next/**',
-      '**/*.css' // Exclude CSS files completely
+      '**/*.css', // Exclude CSS files completely
+      '**/*.json' // Exclude JSON config files
     ],
     plugins: {
       '@typescript-eslint': typescript,
