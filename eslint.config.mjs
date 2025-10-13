@@ -1,22 +1,17 @@
-export default {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    '@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
-    'prettier'
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+import js from '@eslint/js'
+import globals from 'globals'
+
+export default [
+  {
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: globals.browser
+    },
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    ignores: ['dist/**', 'node_modules/**'],
+    rules: {
+      ...js.configs.recommended.rules,
+    },
   },
-}
+]
