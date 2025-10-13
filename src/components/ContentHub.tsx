@@ -108,7 +108,11 @@ const categories = [
   'Design & Creativity'
 ]
 
-export default function ContentHub() {
+interface ContentHubProps {
+  onContentClick?: (contentId: number) => void
+}
+
+export default function ContentHub({ onContentClick }: ContentHubProps) {
   const [activeCategory, setActiveCategory] = useState('All')
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -194,6 +198,7 @@ export default function ContentHub() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
+              onClick={() => onContentClick?.(item.id)}
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">

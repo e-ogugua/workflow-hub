@@ -1,10 +1,13 @@
 import { useState, useCallback, useMemo, useRef } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
 import ToolsGrid from './components/ToolsGrid'
 import ToolComparison from './components/ToolComparison'
 import ContentHub from './components/ContentHub'
+import ToolDetail from './components/ToolDetail'
+import ContentDetail from './components/ContentDetail'
 import Footer from './components/Footer'
 import { aiTools, categories, Tool } from './data/tools'
 import { Bot, Layers, Users, TrendingUp, ArrowUpDown, Star, GitCompare } from 'lucide-react'
@@ -26,6 +29,7 @@ function useDebounce<T extends (...args: any[]) => any>(callback: T, delay: numb
 type SortOption = 'name' | 'rating' | 'users' | 'pricing'
 
 function App() {
+  const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState<SortOption>('name')
@@ -94,12 +98,6 @@ function App() {
     { label: 'Success Rate', value: '98%', icon: TrendingUp }
   ]
 
-  const handleTryNow = (tool: Tool) => {
-    if (tool.demoUrl) {
-      window.open(tool.demoUrl, '_blank')
-    }
-  }
-
   const handleSubmitTool = () => {
     // TODO: Implement tool submission
     console.log('Submit tool clicked')
@@ -134,66 +132,107 @@ function App() {
     }
   }
 
+  const handleToolClick = (tool: Tool) => {
+    navigate(`/tool/${tool.id}`)
+  }
+
+  const handleContentClick = (contentId: number) => {
+    navigate(`/content/${contentId}`)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900 text-white">
-      <Header onSubmitTool={handleSubmitTool} />
-      <Hero
-        searchTerm={searchTerm}
-        onSearchChange={handleSearchChange}
-        stats={stats}
-      />
-      <Categories
-        categories={categories}
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
-      />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Header onSubmitTool={handleSubmitTool} />
+            <Hero
+              searchTerm={searchTerm}
+              onSearchChange={handleSearchChange}
+              stats={stats}
+            />
+            <Categories
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryChange={setActiveCategory}
+            />
 
-      {/* Sort and Compare Controls */}
-      <div className="container mx-auto px-6 mb-8">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Sort Tools</h3>
-          <div className="flex space-x-2">
-            {[
-              { key: 'name', label: 'Name', icon: ArrowUpDown },
-              { key: 'rating', label: 'Rating', icon: Star },
-              { key: 'users', label: 'Popularity', icon: Users },
-              { key: 'pricing', label: 'Pricing', icon: TrendingUp }
-            ].map(({ key, label, icon: Icon }) => (
-              <button
-                key={key}
-                onClick={() => handleSort(key as SortOption)}
-                className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
-                  sortBy === key ? 'bg-ai-primary text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span className="text-sm">{label}</span>
-                {sortBy === key && (
-                  <span className="text-xs">{sortOrder === 'asc' ? '↑' : '↓'}</span>
-                )}
-              </button>
-            ))}
-            <button
-              onClick={openComparison}
-              className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
-                comparisonTools.length > 0 ? 'bg-green-600 text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
-              }`}
-            >
-              <GitCompare className="w-4 h-4" />
-              <span className="text-sm">Compare ({comparisonTools.length})</span>
-            </button>
-          </div>
-        </div>
-      </div>
+            {/* Sort and Compare Controls */}
+            <div className="container mx-auto px-6 mb-8">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold">Sort Tools</h3>
+                <div className="flex space-x-2">
+                  {[
+                    { key: 'name', label: 'Name', icon: ArrowUpDown },
+                    { key: 'rating', label: 'Rating', icon: Star },
+                    { key: 'users', label: 'Popularity', icon: Users },
+                    { key: 'pricing', label: 'Pricing', icon: TrendingUp }
+                  ].map(({ key, label, icon: Icon }) => (
+                    <button
+                      key={key}
+                      onClick={() => handleSort(key as SortOption)}
+                      className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
+                        sortBy === key ? 'bg-ai-primary text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span className="text-sm">{label}</span>
+                      {sortBy === key && (
+                        <span className="text-xs">{sortOrder === 'asc' ? '↑' : '↓'}</span>
+                      )}
+                    </button>
+                  ))}
+                  <button
+                    onClick={openComparison}
+                    className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
+                      comparisonTools.length > 0 ? 'bg-green-600 text-white' : 'bg-white/10 hover:bg-white/20 text-gray-300'
+                    }`}
+                  >
+                    <GitCompare className="w-4 h-4" />
+                    <span className="text-sm">Compare ({comparisonTools.length})</span>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-      <ToolsGrid
-        tools={filteredAndSortedTools}
-        onTryNow={handleTryNow}
-        onAddToComparison={handleAddToComparison}
-        comparisonTools={comparisonTools}
-      />
-      <ContentHub />
-      <Footer />
+            <ToolsGrid
+              tools={filteredAndSortedTools}
+              onTryNow={handleToolClick}
+              onAddToComparison={handleAddToComparison}
+              comparisonTools={comparisonTools}
+            />
+            <ContentHub onContentClick={handleContentClick} />
+            <Footer />
+          </>
+        } />
+        <Route path="/tool/:id" element={
+          <ToolDetail
+            tool={aiTools.find(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0')) || aiTools[0]}
+            onBack={() => navigate('/')}
+            onAddToComparison={handleAddToComparison}
+            isInComparison={comparisonTools.some(t => t.id === parseInt(window.location.pathname.split('/').pop() || '0'))}
+          />
+        } />
+        <Route path="/content/:id" element={
+          <ContentDetail
+            content={{
+              id: 1,
+              title: 'Getting Started with AI Tools',
+              type: 'tutorial',
+              category: 'General',
+              description: 'A comprehensive guide to getting started with AI tools for beginners.',
+              readTime: '15 min',
+              difficulty: 'Beginner',
+              rating: 4.7,
+              author: 'AI Hub Team',
+              tags: ['AI', 'Beginner', 'Tutorial'],
+              content: 'Full article content here...',
+              publishedDate: '2025-01-15'
+            }}
+            onBack={() => navigate('/')}
+          />
+        } />
+      </Routes>
 
       {showComparison && (
         <ToolComparison

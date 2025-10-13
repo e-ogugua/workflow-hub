@@ -9,7 +9,6 @@ import {
   Layers,
   Palette,
   Bot,
-  Cpu,
   Database,
   Mic,
   PenTool,
@@ -17,21 +16,7 @@ import {
   Calculator,
   BookOpen,
   Globe,
-  Shield,
-  Zap,
-  TrendingUp,
-  Users,
-  Star,
-  Award,
-  Gift,
-  Target,
-  Lightbulb,
-  Camera,
-  Languages,
-  Heart,
-  Smartphone,
-  Cloud,
-  Rocket
+  Languages
 } from 'lucide-react'
 
 export interface Tool {
