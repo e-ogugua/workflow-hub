@@ -60,10 +60,19 @@ export default [
       globals: {
         ...globals.jest,
         ...globals.browser,
+        React: "readonly",
+        require: "readonly",
+        module: "readonly",
+        exports: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
       },
     },
     rules: {
       "@typescript-eslint/no-explicit-any": "off", // Allow any in tests
+      "@typescript-eslint/no-var-requires": "off", // Allow require in tests
+      "no-undef": "off", // Test globals are available
+      "no-unused-vars": "off", // Test utilities may be unused
     },
   },
 
