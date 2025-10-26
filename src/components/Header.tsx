@@ -1,57 +1,58 @@
-import { motion } from 'framer-motion'
-import { Cpu, Sparkles, Menu, X } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
-import { useState, useRef, useEffect } from 'react'
+import { motion } from "framer-motion";
+import { Cpu, Sparkles, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 
 interface HeaderProps {
-  onSubmitTool: () => void
+  onSubmitTool: () => void;
 }
 
 export default function Header({ onSubmitTool }: HeaderProps) {
-  const location = useLocation()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const mobileMenuRef = useRef<HTMLDivElement>(null)
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleNavClick = (sectionId: string) => {
-    if (location.pathname === '/') {
+    if (location.pathname === "/") {
       // If we're on the main page, scroll to the section
-      const element = document.getElementById(sectionId)
+      const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
-        console.warn(`Section with id "${sectionId}" not found`)
+        console.warn(`Section with id "${sectionId}" not found`);
       }
     } else {
       // If we're on a different page, navigate to main page and scroll
-      window.location.href = `/#${sectionId}`
+      window.location.href = `/#${sectionId}`;
     }
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   // Handle escape key to close mobile menu
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false)
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
       }
-    }
+    };
 
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [isMobileMenuOpen])
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [isMobileMenuOpen]);
 
   // Focus management for mobile menu
   useEffect(() => {
     if (isMobileMenuOpen && mobileMenuRef.current) {
-      const firstFocusableElement = mobileMenuRef.current.querySelector('button')
-      firstFocusableElement?.focus()
+      const firstFocusableElement =
+        mobileMenuRef.current.querySelector("button");
+      firstFocusableElement?.focus();
     }
-  }, [isMobileMenuOpen])
+  }, [isMobileMenuOpen]);
 
   return (
     <motion.header
@@ -75,25 +76,49 @@ export default function Header({ onSubmitTool }: HeaderProps) {
               <h1 className="text-2xl font-bold font-serif gradient-text group-hover:scale-105 transition-transform duration-300">
                 Workflow Hub
               </h1>
-              <p className="text-sm text-ai-primary font-medium">Premium AI Tools</p>
+              <p className="text-sm text-ai-primary font-medium">AI Tools</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+          <nav
+            className="hidden md:flex space-x-8"
+            role="navigation"
+            aria-label="Main navigation"
+          >
             {[
-              { id: 'tools', label: 'Tools', icon: Cpu, ariaLabel: 'Browse AI tools' },
-              { id: 'categories', label: 'Categories', icon: Sparkles, ariaLabel: 'Browse tool categories' },
-              { id: 'trending', label: 'Trending', icon: Cpu, ariaLabel: 'View trending tools' },
-              { id: 'about', label: 'About', icon: Cpu, ariaLabel: 'About Workflow Hub' }
+              {
+                id: "tools",
+                label: "Tools",
+                icon: Cpu,
+                ariaLabel: "Browse AI tools",
+              },
+              {
+                id: "categories",
+                label: "Categories",
+                icon: Sparkles,
+                ariaLabel: "Browse tool categories",
+              },
+              {
+                id: "trending",
+                label: "Trending",
+                icon: Cpu,
+                ariaLabel: "View trending tools",
+              },
+              {
+                id: "about",
+                label: "About",
+                icon: Cpu,
+                ariaLabel: "About Workflow Hub",
+              },
             ].map(({ id, label, icon: Icon, ariaLabel }) => (
               <button
                 key={id}
                 onClick={() => handleNavClick(id)}
                 className={`group flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary ${
-                  location.pathname === '/' && location.hash === `#${id}`
-                    ? 'bg-ai-primary/20 text-ai-primary border border-ai-primary/30'
-                    : 'hover:bg-white/10 hover:text-ai-primary'
+                  location.pathname === "/" && location.hash === `#${id}`
+                    ? "bg-ai-primary/20 text-ai-primary border border-ai-primary/30"
+                    : "hover:bg-white/10 hover:text-ai-primary"
                 }`}
                 aria-label={ariaLabel}
               >
@@ -123,7 +148,11 @@ export default function Header({ onSubmitTool }: HeaderProps) {
               onClick={toggleMobileMenu}
               className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
               whileTap={{ scale: 0.95 }}
-              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={
+                isMobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
             >
@@ -140,11 +169,11 @@ export default function Header({ onSubmitTool }: HeaderProps) {
         <motion.div
           ref={mobileMenuRef}
           id="mobile-navigation"
-          className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} mt-4`}
+          className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"} mt-4`}
           initial={{ opacity: 0, height: 0 }}
           animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? 'auto' : 0
+            height: isMobileMenuOpen ? "auto" : 0,
           }}
           transition={{ duration: 0.3 }}
           role="navigation"
@@ -153,18 +182,38 @@ export default function Header({ onSubmitTool }: HeaderProps) {
           <div className="glass rounded-xl p-4 border border-white/10">
             <nav className="flex flex-col space-y-3" role="menubar">
               {[
-                { id: 'tools', label: 'Tools', icon: Cpu, ariaLabel: 'Browse AI tools' },
-                { id: 'categories', label: 'Categories', icon: Sparkles, ariaLabel: 'Browse tool categories' },
-                { id: 'trending', label: 'Trending', icon: Cpu, ariaLabel: 'View trending tools' },
-                { id: 'about', label: 'About', icon: Cpu, ariaLabel: 'About Workflow Hub' }
+                {
+                  id: "tools",
+                  label: "Tools",
+                  icon: Cpu,
+                  ariaLabel: "Browse AI tools",
+                },
+                {
+                  id: "categories",
+                  label: "Categories",
+                  icon: Sparkles,
+                  ariaLabel: "Browse tool categories",
+                },
+                {
+                  id: "trending",
+                  label: "Trending",
+                  icon: Cpu,
+                  ariaLabel: "View trending tools",
+                },
+                {
+                  id: "about",
+                  label: "About",
+                  icon: Cpu,
+                  ariaLabel: "About Workflow Hub",
+                },
               ].map(({ id, label, icon: Icon, ariaLabel }) => (
                 <button
                   key={id}
                   onClick={() => handleNavClick(id)}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary ${
-                    location.pathname === '/' && location.hash === `#${id}`
-                      ? 'bg-ai-primary/20 text-ai-primary border border-ai-primary/30'
-                      : 'hover:bg-white/10 hover:text-ai-primary'
+                    location.pathname === "/" && location.hash === `#${id}`
+                      ? "bg-ai-primary/20 text-ai-primary border border-ai-primary/30"
+                      : "hover:bg-white/10 hover:text-ai-primary"
                   }`}
                   role="menuitem"
                   aria-label={ariaLabel}
@@ -178,5 +227,5 @@ export default function Header({ onSubmitTool }: HeaderProps) {
         </motion.div>
       </div>
     </motion.header>
-  )
+  );
 }

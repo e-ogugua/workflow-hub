@@ -1,18 +1,24 @@
-import { motion } from 'framer-motion'
-import { X, Star, Users, DollarSign } from 'lucide-react'
-import { Tool } from '../data/tools'
+import { motion } from "framer-motion";
+import { X, Star, Users, DollarSign } from "lucide-react";
+import { Tool } from "../data/tools";
 
 interface ToolComparisonProps {
-  tools: Tool[]
-  onRemoveTool: (toolId: number) => void
-  onClose: () => void
+  tools: Tool[];
+  onRemoveTool: (toolId: number) => void;
+  onClose: () => void;
 }
 
-export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolComparisonProps) {
-  if (tools.length === 0) return null
+export default function ToolComparison({
+  tools,
+  onRemoveTool,
+  onClose,
+}: ToolComparisonProps) {
+  if (tools.length === 0) return null;
 
-  const maxFeatures = Math.max(...tools.map(tool => tool.features.length))
-  const maxUseCases = Math.max(...tools.map(tool => tool.useCases?.length || 0))
+  const maxFeatures = Math.max(...tools.map((tool) => tool.features.length));
+  const maxUseCases = Math.max(
+    ...tools.map((tool) => tool.useCases?.length || 0),
+  );
 
   return (
     <motion.div
@@ -44,10 +50,15 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
             <thead>
               <tr className="border-b border-white/20">
                 <th className="text-left py-3 px-4 text-gray-300">Feature</th>
-                {tools.map(tool => (
-                  <th key={tool.id} className="text-center py-3 px-4 min-w-[200px]">
+                {tools.map((tool) => (
+                  <th
+                    key={tool.id}
+                    className="text-center py-3 px-4 min-w-[200px]"
+                  >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-white">{tool.name}</span>
+                      <span className="font-medium text-white">
+                        {tool.name}
+                      </span>
                       <button
                         onClick={() => onRemoveTool(tool.id)}
                         className="p-1 hover:bg-red-500/20 rounded transition-colors"
@@ -62,8 +73,10 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
             <tbody>
               {/* Basic Info */}
               <tr className="border-b border-white/10">
-                <td className="py-3 px-4 text-gray-300 font-medium">Description</td>
-                {tools.map(tool => (
+                <td className="py-3 px-4 text-gray-300 font-medium">
+                  Description
+                </td>
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-gray-300 text-sm">
                     {tool.description}
                   </td>
@@ -71,18 +84,20 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
               </tr>
               <tr className="border-b border-white/10">
                 <td className="py-3 px-4 text-gray-300 font-medium">Rating</td>
-                {tools.map(tool => (
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
                     <div className="flex items-center justify-center space-x-1">
                       <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-white font-medium">{tool.rating}</span>
+                      <span className="text-white font-medium">
+                        {tool.rating}
+                      </span>
                     </div>
                   </td>
                 ))}
               </tr>
               <tr className="border-b border-white/10">
                 <td className="py-3 px-4 text-gray-300 font-medium">Users</td>
-                {tools.map(tool => (
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
                     <div className="flex items-center justify-center space-x-1">
                       <Users className="w-4 h-4 text-gray-400" />
@@ -93,15 +108,19 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
               </tr>
               <tr className="border-b border-white/10">
                 <td className="py-3 px-4 text-gray-300 font-medium">Pricing</td>
-                {tools.map(tool => (
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
                     <div className="flex items-center justify-center space-x-1">
                       <DollarSign className="w-4 h-4 text-gray-400" />
-                      <span className={`px-2 py-1 rounded text-xs ${
-                        tool.pricing === 'Free' ? 'bg-green-500/20 text-green-400' :
-                        tool.pricing === 'Freemium' ? 'bg-blue-500/20 text-blue-400' :
-                        'bg-orange-500/20 text-orange-400'
-                      }`}>
+                      <span
+                        className={`px-2 py-1 rounded text-xs ${
+                          tool.pricing === "Free"
+                            ? "bg-green-500/20 text-green-400"
+                            : tool.pricing === "Freemium"
+                              ? "bg-blue-500/20 text-blue-400"
+                              : "bg-orange-500/20 text-orange-400"
+                        }`}
+                      >
                         {tool.pricing}
                       </span>
                     </div>
@@ -109,14 +128,20 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
                 ))}
               </tr>
               <tr className="border-b border-white/10">
-                <td className="py-3 px-4 text-gray-300 font-medium">Difficulty</td>
-                {tools.map(tool => (
+                <td className="py-3 px-4 text-gray-300 font-medium">
+                  Difficulty
+                </td>
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
-                    <span className={`px-2 py-1 rounded text-xs ${
-                      tool.difficulty === 'Beginner' ? 'bg-green-500/20 text-green-400' :
-                      tool.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-                      'bg-red-500/20 text-red-400'
-                    }`}>
+                    <span
+                      className={`px-2 py-1 rounded text-xs ${
+                        tool.difficulty === "Beginner"
+                          ? "bg-green-500/20 text-green-400"
+                          : tool.difficulty === "Intermediate"
+                            ? "bg-yellow-500/20 text-yellow-400"
+                            : "bg-red-500/20 text-red-400"
+                      }`}
+                    >
                       {tool.difficulty}
                     </span>
                   </td>
@@ -129,10 +154,10 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
                   <td className="py-3 px-4 text-gray-300 font-medium">
                     Feature {i + 1}
                   </td>
-                  {tools.map(tool => (
+                  {tools.map((tool) => (
                     <td key={tool.id} className="py-3 px-4 text-center">
                       <span className="text-gray-300 text-sm">
-                        {tool.features[i] || '-'}
+                        {tool.features[i] || "-"}
                       </span>
                     </td>
                   ))}
@@ -145,10 +170,10 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
                   <td className="py-3 px-4 text-gray-300 font-medium">
                     Use Case {i + 1}
                   </td>
-                  {tools.map(tool => (
+                  {tools.map((tool) => (
                     <td key={tool.id} className="py-3 px-4 text-center">
                       <span className="text-gray-300 text-sm">
-                        {tool.useCases?.[i] || '-'}
+                        {tool.useCases?.[i] || "-"}
                       </span>
                     </td>
                   ))}
@@ -157,15 +182,20 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
 
               {/* Alternatives */}
               <tr className="border-b border-white/10">
-                <td className="py-3 px-4 text-gray-300 font-medium">Alternatives</td>
-                {tools.map(tool => (
+                <td className="py-3 px-4 text-gray-300 font-medium">
+                  Alternatives
+                </td>
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
                     <div className="flex flex-wrap gap-1 justify-center">
                       {tool.alternatives?.slice(0, 2).map((alt, idx) => (
-                        <span key={idx} className="text-xs bg-white/10 px-2 py-1 rounded">
+                        <span
+                          key={idx}
+                          className="text-xs bg-white/10 px-2 py-1 rounded"
+                        >
                           {alt}
                         </span>
-                      )) || '-'}
+                      )) || "-"}
                     </div>
                   </td>
                 ))}
@@ -174,10 +204,10 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
               {/* Action Buttons */}
               <tr>
                 <td className="py-3 px-4 text-gray-300 font-medium">Action</td>
-                {tools.map(tool => (
+                {tools.map((tool) => (
                   <td key={tool.id} className="py-3 px-4 text-center">
                     <button
-                      onClick={() => window.open(tool.demoUrl, '_blank')}
+                      onClick={() => window.open(tool.demoUrl, "_blank")}
                       className="bg-ai-primary hover:bg-indigo-600 px-4 py-2 rounded-lg text-sm transition-colors"
                     >
                       Try Now
@@ -190,5 +220,5 @@ export default function ToolComparison({ tools, onRemoveTool, onClose }: ToolCom
         </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }

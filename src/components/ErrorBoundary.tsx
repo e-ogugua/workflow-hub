@@ -1,35 +1,35 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react'
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
+import React, { Component, ErrorInfo, ReactNode } from "react";
+import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface State {
-  hasError: boolean
-  error?: Error
+  hasError: boolean;
+  error?: Error;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false
-  }
+    hasError: false,
+  };
 
   public static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error }
+    return { hasError: true, error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo)
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
   private handleRetry = () => {
-    this.setState({ hasError: false, error: undefined })
-  }
+    this.setState({ hasError: false, error: undefined });
+  };
 
   private handleGoHome = () => {
-    window.location.href = '/'
-  }
+    window.location.href = "/";
+  };
 
   public render() {
     if (this.state.hasError) {
@@ -40,7 +40,8 @@ export class ErrorBoundary extends Component<Props, State> {
               <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-4" />
               <h1 className="text-3xl font-bold mb-4">Something went wrong</h1>
               <p className="text-gray-300 mb-6">
-                We encountered an unexpected error. Please try refreshing the page or go back to the home page.
+                We encountered an unexpected error. Please try refreshing the
+                page or go back to the home page.
               </p>
             </div>
 
@@ -62,7 +63,7 @@ export class ErrorBoundary extends Component<Props, State> {
               </button>
             </div>
 
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {process.env.NODE_ENV === "development" && this.state.error && (
               <details className="mt-8 text-left">
                 <summary className="cursor-pointer text-sm text-gray-400 hover:text-gray-300 mb-2">
                   Error Details (Development)
@@ -74,43 +75,46 @@ export class ErrorBoundary extends Component<Props, State> {
             )}
           </div>
         </div>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
 // Hook for handling async errors
 export function useErrorHandler() {
-  const [error, setError] = React.useState<Error | null>(null)
+  const [error, setError] = React.useState<Error | null>(null);
 
   const resetError = React.useCallback(() => {
-    setError(null)
-  }, [])
+    setError(null);
+  }, []);
 
   const handleError = React.useCallback((error: Error) => {
-    setError(error)
-    console.error('Error caught by useErrorHandler:', error)
-  }, [])
+    setError(error);
+    console.error("Error caught by useErrorHandler:", error);
+  }, []);
 
   React.useEffect(() => {
     const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-      handleError(new Error(`Unhandled promise rejection: ${event.reason}`))
-    }
+      handleError(new Error(`Unhandled promise rejection: ${event.reason}`));
+    };
 
     const handleErrorEvent = (event: ErrorEvent) => {
-      handleError(new Error(`JavaScript error: ${event.message}`))
-    }
+      handleError(new Error(`JavaScript error: ${event.message}`));
+    };
 
-    window.addEventListener('unhandledrejection', handleUnhandledRejection)
-    window.addEventListener('error', handleErrorEvent)
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+    window.addEventListener("error", handleErrorEvent);
 
     return () => {
-      window.removeEventListener('unhandledrejection', handleUnhandledRejection)
-      window.removeEventListener('error', handleErrorEvent)
-    }
-  }, [handleError])
+      window.removeEventListener(
+        "unhandledrejection",
+        handleUnhandledRejection,
+      );
+      window.removeEventListener("error", handleErrorEvent);
+    };
+  }, [handleError]);
 
-  return { error, resetError, handleError }
+  return { error, resetError, handleError };
 }

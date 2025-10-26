@@ -1,19 +1,23 @@
-import { motion } from 'framer-motion'
-import React from 'react'
+import { motion } from "framer-motion";
+import React from "react";
 
 interface Category {
-  id: string
-  name: string
-  icon: React.ComponentType<{ className?: string }>
+  id: string;
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 interface CategoriesProps {
-  categories: Category[]
-  activeCategory: string
-  onCategoryChange: (category: string) => void
+  categories: Category[];
+  activeCategory: string;
+  onCategoryChange: (category: string) => void;
 }
 
-export default function Categories({ categories, activeCategory, onCategoryChange }: CategoriesProps) {
+export default function Categories({
+  categories,
+  activeCategory,
+  onCategoryChange,
+}: CategoriesProps) {
   return (
     <motion.section
       className="container mx-auto px-4 sm:px-6 mb-12"
@@ -26,7 +30,8 @@ export default function Categories({ categories, activeCategory, onCategoryChang
           Explore AI Categories
         </h3>
         <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-          Discover powerful AI tools organized by category to find exactly what you need for your workflow
+          Discover powerful AI tools organized by category to find exactly what
+          you need for your workflow
         </p>
       </div>
 
@@ -37,8 +42,8 @@ export default function Categories({ categories, activeCategory, onCategoryChang
             onClick={() => onCategoryChange(category.id)}
             className={`group flex items-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-300 relative overflow-hidden ${
               activeCategory === category.id
-                ? 'bg-gradient-to-r from-ai-primary to-ai-secondary text-white shadow-lg hover:shadow-xl'
-                : 'glass hover:bg-white/10 text-gray-300 hover:text-white border border-white/10'
+                ? "bg-gradient-to-r from-ai-primary to-ai-secondary text-white shadow-lg hover:shadow-xl"
+                : "glass hover:bg-white/10 text-gray-300 hover:text-white border border-white/10"
             }`}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -46,10 +51,16 @@ export default function Categories({ categories, activeCategory, onCategoryChang
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <category.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
-              activeCategory === category.id ? 'text-white' : 'text-ai-primary group-hover:text-ai-secondary'
-            }`} />
-            <span className="font-medium text-sm sm:text-base">{category.name}</span>
+            <category.icon
+              className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
+                activeCategory === category.id
+                  ? "text-white"
+                  : "text-ai-primary group-hover:text-ai-secondary"
+              }`}
+            />
+            <span className="font-medium text-sm sm:text-base">
+              {category.name}
+            </span>
 
             {/* Active indicator */}
             {activeCategory === category.id && (
@@ -76,5 +87,5 @@ export default function Categories({ categories, activeCategory, onCategoryChang
         </div>
       </div>
     </motion.section>
-  )
+  );
 }

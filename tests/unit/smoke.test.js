@@ -1,3 +1,3 @@
-test('app should render without crashing', () => {
+test("app should render without crashing", () => {
   expect(true).toBe(true);
 });

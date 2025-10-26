@@ -1,8 +1,8 @@
 {
   "name": "workflow-hub",
   "version": "2.0.0",
-  "description": "Workflow Hub - Premium AI Tools Collection. Discover, compare, and access cutting-edge AI tools for productivity, creativity, and business growth.",
-  "author": "Emmanuel Chukwuka Ogugua <emmachuka@gmail.com>",
+  "description": "AI tools directory web application. Discover, compare, and access tools for productivity, creativity, and business workflows.",
+  "author": "CEO – Chukwuka Emmanuel Ogugua (EmmanuelOS) <emmachuka@gmail.com>",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -30,6 +30,7 @@
     "@playwright/test": "^1.55.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

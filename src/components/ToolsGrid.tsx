@@ -1,16 +1,21 @@
-import { motion } from 'framer-motion'
-import { Bot } from 'lucide-react'
-import ToolCard from './ToolCard'
-import { Tool } from '../data/tools'
+import { motion } from "framer-motion";
+import { Bot } from "lucide-react";
+import ToolCard from "./ToolCard";
+import { Tool } from "../data/tools";
 
 interface ToolsGridProps {
-  tools: Tool[]
-  onTryNow: (tool: Tool) => void
-  onAddToComparison?: (tool: Tool) => void
-  comparisonTools?: Tool[]
+  tools: Tool[];
+  onTryNow: (tool: Tool) => void;
+  onAddToComparison?: (tool: Tool) => void;
+  comparisonTools?: Tool[];
 }
 
-export default function ToolsGrid({ tools, onTryNow, onAddToComparison, comparisonTools }: ToolsGridProps) {
+export default function ToolsGrid({
+  tools,
+  onTryNow,
+  onAddToComparison,
+  comparisonTools,
+}: ToolsGridProps) {
   if (tools.length === 0) {
     return (
       <motion.div
@@ -21,9 +26,11 @@ export default function ToolsGrid({ tools, onTryNow, onAddToComparison, comparis
       >
         <Bot className="w-16 h-16 text-gray-400 mx-auto mb-4" />
         <h3 className="text-xl font-bold text-gray-300 mb-2">No tools found</h3>
-        <p className="text-gray-400">Try adjusting your search or category filter</p>
+        <p className="text-gray-400">
+          Try adjusting your search or category filter
+        </p>
       </motion.div>
-    )
+    );
   }
 
   return (
@@ -45,11 +52,11 @@ export default function ToolsGrid({ tools, onTryNow, onAddToComparison, comparis
               tool={tool}
               onTryNow={onTryNow}
               onAddToComparison={onAddToComparison}
-              isInComparison={comparisonTools?.some(t => t.id === tool.id)}
+              isInComparison={comparisonTools?.some((t) => t.id === tool.id)}
             />
           </motion.div>
         ))}
       </div>
     </motion.section>
-  )
+  );
 }

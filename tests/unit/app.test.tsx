@@ -1,27 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-
-// Mock Next.js router
-jest.mock('next/router', () => ({
-  useRouter() {
-    return {
-      route: '/',
-      pathname: '/',
-      query: {},
-      asPath: '/',
-      push: jest.fn(),
-      replace: jest.fn(),
-    };
-  },
-}));
-
-describe('App Component', () => {
-  it('renders without crashing', () => {
-    // Basic smoke test - adjust based on your app structure
+// Basic smoke test for the application
+describe('Application', () => {
+  it('should run without errors', () => {
     expect(true).toBe(true);
   });
-  
-  it('has proper document title', () => {
-    expect(document.title).toBeDefined();
+
+  it('should have document available', () => {
+    expect(typeof document).toBe('object');
   });
 });

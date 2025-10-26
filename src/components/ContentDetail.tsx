@@ -1,45 +1,62 @@
-import { motion } from 'framer-motion'
-import { ArrowLeft, Clock, User, Tag, BookOpen, Video, FileText } from 'lucide-react'
+import { motion } from "framer-motion";
+import {
+  ArrowLeft,
+  Clock,
+  User,
+  Tag,
+  BookOpen,
+  Video,
+  FileText,
+} from "lucide-react";
 
 interface ContentDetailProps {
   content: {
-    id: number
-    title: string
-    type: 'article' | 'tutorial' | 'guide' | 'video'
-    category: string
-    description: string
-    readTime: string
-    difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
-    rating: number
-    author: string
-    tags: string[]
-    content: string
-    publishedDate: string
-  }
-  onBack: () => void
+    id: number;
+    title: string;
+    type: "article" | "tutorial" | "guide" | "video";
+    category: string;
+    description: string;
+    readTime: string;
+    difficulty: "Beginner" | "Intermediate" | "Advanced";
+    rating: number;
+    author: string;
+    tags: string[];
+    content: string;
+    publishedDate: string;
+  };
+  onBack: () => void;
 }
 
 export default function ContentDetail({ content, onBack }: ContentDetailProps) {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Beginner': return 'bg-green-500/20 text-green-400'
-      case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400'
-      case 'Advanced': return 'bg-red-500/20 text-red-400'
-      default: return 'bg-gray-500/20 text-gray-400'
+      case "Beginner":
+        return "bg-green-500/20 text-green-400";
+      case "Intermediate":
+        return "bg-yellow-500/20 text-yellow-400";
+      case "Advanced":
+        return "bg-red-500/20 text-red-400";
+      default:
+        return "bg-gray-500/20 text-gray-400";
     }
-  }
+  };
 
   const getIcon = (type: string) => {
     switch (type) {
-      case 'article': return FileText
-      case 'tutorial': return BookOpen
-      case 'guide': return User
-      case 'video': return Video
-      default: return FileText
+      case "article":
+        return FileText;
+      case "tutorial":
+        return BookOpen;
+      case "guide":
+        return User;
+      case "video":
+        return Video;
+      default:
+        return FileText;
     }
-  }
+  };
 
-  const Icon = getIcon(content.type)
+  const Icon = getIcon(content.type);
 
   return (
     <motion.div
@@ -76,13 +93,19 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
             </div>
             <div className="flex-1">
               <div className="flex items-center space-x-4 mb-2">
-                <span className={`px-3 py-1 rounded-full text-sm ${getDifficultyColor(content.difficulty)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm ${getDifficultyColor(content.difficulty)}`}
+                >
                   {content.difficulty}
                 </span>
-                <span className="text-gray-400 text-sm capitalize">{content.type}</span>
+                <span className="text-gray-400 text-sm capitalize">
+                  {content.type}
+                </span>
               </div>
               <h1 className="text-4xl font-bold mb-4">{content.title}</h1>
-              <p className="text-xl text-gray-300 mb-4">{content.description}</p>
+              <p className="text-xl text-gray-300 mb-4">
+                {content.description}
+              </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
                 <div className="flex items-center space-x-1">
                   <User className="w-4 h-4" />
@@ -110,15 +133,20 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
             <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
               <h2>Introduction</h2>
               <p className="text-gray-300 leading-relaxed">
-                Welcome to this comprehensive guide on {content.title.toLowerCase()}. In today's rapidly evolving AI landscape,
-                understanding how to effectively use AI tools is crucial for both personal and professional development.
-                This {content.type} will walk you through everything you need to know to get started and make the most of this powerful technology.
+                Welcome to this comprehensive guide on{" "}
+                {content.title.toLowerCase()}. In today's rapidly evolving AI
+                landscape, understanding how to effectively use AI tools is
+                crucial for both personal and professional development. This{" "}
+                {content.type} will walk you through everything you need to know
+                to get started and make the most of this powerful technology.
               </p>
 
               <h2>Getting Started</h2>
               <p className="text-gray-300 leading-relaxed">
-                Whether you're a complete beginner or looking to enhance your existing skills, this section will provide
-                you with the foundational knowledge needed to begin your journey with AI tools effectively.
+                Whether you're a complete beginner or looking to enhance your
+                existing skills, this section will provide you with the
+                foundational knowledge needed to begin your journey with AI
+                tools effectively.
               </p>
 
               <h3>Prerequisites</h3>
@@ -130,60 +158,72 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
 
               <h2>Step-by-Step Guide</h2>
               <p className="text-gray-300 leading-relaxed">
-                Follow these detailed steps to get the most out of your AI tools experience. Each step includes
-                practical examples and tips for optimal results.
+                Follow these detailed steps to get the most out of your AI tools
+                experience. Each step includes practical examples and tips for
+                optimal results.
               </p>
 
               <h3>Step 1: Setting Up Your Account</h3>
               <p className="text-gray-300 leading-relaxed">
-                The first step in your AI journey is creating an account with your chosen platform. Most AI tools
-                offer free tiers that are perfect for getting started without any financial commitment.
+                The first step in your AI journey is creating an account with
+                your chosen platform. Most AI tools offer free tiers that are
+                perfect for getting started without any financial commitment.
               </p>
 
               <h3>Step 2: Exploring the Interface</h3>
               <p className="text-gray-300 leading-relaxed">
-                Once you're logged in, take some time to explore the interface. Familiarize yourself with the main
-                features, navigation, and available options. Many platforms offer interactive tutorials to help you get started.
+                Once you're logged in, take some time to explore the interface.
+                Familiarize yourself with the main features, navigation, and
+                available options. Many platforms offer interactive tutorials to
+                help you get started.
               </p>
 
               <h2>Best Practices</h2>
               <p className="text-gray-300 leading-relaxed">
-                To maximize your success with AI tools, consider these proven best practices that experienced users swear by.
+                To maximize your success with AI tools, consider these proven
+                best practices that experienced users swear by.
               </p>
 
               <h3>Tip 1: Start Small</h3>
               <p className="text-gray-300 leading-relaxed">
-                Don't try to tackle complex projects right away. Start with simple tasks and gradually increase complexity
-                as you become more comfortable with the tools.
+                Don't try to tackle complex projects right away. Start with
+                simple tasks and gradually increase complexity as you become
+                more comfortable with the tools.
               </p>
 
               <h3>Tip 2: Experiment Regularly</h3>
               <p className="text-gray-300 leading-relaxed">
-                The best way to learn is through experimentation. Try different prompts, settings, and approaches to
-                discover what works best for your specific needs.
+                The best way to learn is through experimentation. Try different
+                prompts, settings, and approaches to discover what works best
+                for your specific needs.
               </p>
 
               <h2>Common Challenges and Solutions</h2>
               <p className="text-gray-300 leading-relaxed">
-                Every learning journey has its challenges. Here are some common issues users face and how to overcome them.
+                Every learning journey has its challenges. Here are some common
+                issues users face and how to overcome them.
               </p>
 
               <h3>Challenge: Getting Started</h3>
               <p className="text-gray-300 leading-relaxed">
-                Many beginners feel overwhelmed. The solution is to break down your goals into smaller, manageable tasks
-                and tackle them one at a time.
+                Many beginners feel overwhelmed. The solution is to break down
+                your goals into smaller, manageable tasks and tackle them one at
+                a time.
               </p>
 
               <h2>Conclusion</h2>
               <p className="text-gray-300 leading-relaxed">
-                Congratulations on completing this {content.type}! You've taken an important step toward mastering AI tools.
-                Remember that consistent practice and patience are key to becoming proficient. Keep experimenting,
-                stay curious, and don't hesitate to explore other resources in our Content Hub.
+                Congratulations on completing this {content.type}! You've taken
+                an important step toward mastering AI tools. Remember that
+                consistent practice and patience are key to becoming proficient.
+                Keep experimenting, stay curious, and don't hesitate to explore
+                other resources in our Content Hub.
               </p>
 
               <div className="mt-8 p-4 bg-ai-primary/10 rounded-lg border border-ai-primary/20">
                 <p className="text-ai-primary font-medium">
-                  💡 Pro Tip: Join our community forum to connect with other learners and share your experiences!
+                  💡 Pro Tip: Join our community forum to connect with other
+                  learners and share your experiences!
                 </p>
               </div>
             </div>
@@ -200,18 +240,24 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Placeholder for related content */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <h3 className="text-lg font-semibold mb-2">Advanced AI Techniques</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  Advanced AI Techniques
+                </h3>
                 <p className="text-gray-300 text-sm mb-4">
-                  Dive deeper into advanced AI methodologies and techniques for power users.
+                  Dive deeper into advanced AI methodologies and techniques for
+                  power users.
                 </p>
                 <button className="text-ai-primary hover:text-indigo-300 transition-colors">
                   Read More →
                 </button>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <h3 className="text-lg font-semibold mb-2">AI Ethics and Best Practices</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  AI Ethics and Best Practices
+                </h3>
                 <p className="text-gray-300 text-sm mb-4">
-                  Understanding the ethical implications and best practices in AI usage.
+                  Understanding the ethical implications and best practices in
+                  AI usage.
                 </p>
                 <button className="text-ai-primary hover:text-indigo-300 transition-colors">
                   Read More →
@@ -222,5 +268,5 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
         </motion.div>
       </div>
     </motion.div>
-  )
+  );
 }

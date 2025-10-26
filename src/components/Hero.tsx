@@ -1,11 +1,23 @@
-import { motion } from 'framer-motion'
-import { Search, Sparkles, Wand2, ArrowRight, Star, Zap, TrendingUp } from 'lucide-react'
-import React from 'react'
+import { motion } from "framer-motion";
+import {
+  Search,
+  Sparkles,
+  Wand2,
+  ArrowRight,
+  Star,
+  Zap,
+  TrendingUp,
+} from "lucide-react";
+import React from "react";
 
 interface HeroProps {
-  searchTerm: string
-  onSearchChange: (value: string) => void
-  stats: Array<{ label: string; value: string; icon: React.ComponentType<{ className?: string }> }>
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+  stats: Array<{
+    label: string;
+    value: string;
+    icon: React.ComponentType<{ className?: string }>;
+  }>;
 }
 
 export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
@@ -15,10 +27,10 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  }
+        delayChildren: 0.2,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -27,10 +39,10 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  }
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <motion.section
@@ -44,7 +56,10 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-ai-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-ai-secondary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-ai-secondary/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-ai-primary/5 to-ai-secondary/5 rounded-full blur-3xl" />
       </div>
 
@@ -59,8 +74,14 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
             variants={itemVariants}
           >
             <div className="relative">
-              <Sparkles className="w-8 h-8 text-ai-accent animate-pulse" aria-hidden="true" />
-              <div className="absolute inset-0 w-8 h-8 text-ai-accent animate-ping opacity-20" aria-hidden="true">
+              <Sparkles
+                className="w-8 h-8 text-ai-accent animate-pulse"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 w-8 h-8 text-ai-accent animate-ping opacity-20"
+                aria-hidden="true"
+              >
                 <Sparkles className="w-8 h-8" />
               </div>
             </div>
@@ -96,24 +117,29 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
             variants={itemVariants}
             aria-describedby="hero-description"
           >
-            Unlock the power of cutting-edge AI technology with our curated collection of premium tools.
-            From creative design to business automation, discover solutions that transform how you work.
+            Unlock the power of AI technology with our curated collection of
+            tools. From creative design to business automation, discover
+            solutions that transform how you work.
           </motion.p>
           <div id="hero-description" className="sr-only">
-            Workflow Hub showcases innovative AI tools that enhance productivity and creativity across various industries and use cases.
+            Workflow Hub showcases AI tools that enhance productivity and
+            creativity across various industries and use cases.
           </div>
         </motion.div>
 
-        {/* Enhanced Search Bar */}
-        <motion.div
-          className="max-w-3xl mx-auto mb-16"
-          variants={itemVariants}
-        >
+        {/* Search Bar */}
+        <motion.div className="max-w-3xl mx-auto mb-16" variants={itemVariants}>
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition-opacity duration-300" aria-hidden="true" />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition-opacity duration-300"
+              aria-hidden="true"
+            />
             <div className="relative glass-strong rounded-2xl p-2">
               <div className="flex items-center">
-                <Search className="w-6 h-6 text-gray-400 ml-4 mr-4 group-focus-within:text-ai-primary transition-colors" aria-hidden="true" />
+                <Search
+                  className="w-6 h-6 text-gray-400 ml-4 mr-4 group-focus-within:text-ai-primary transition-colors"
+                  aria-hidden="true"
+                />
                 <motion.input
                   type="text"
                   placeholder="Search AI tools, features, or categories..."
@@ -126,7 +152,8 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
                   aria-describedby="search-help"
                 />
                 <div id="search-help" className="sr-only">
-                  Search through our collection of premium AI tools. Results update as you type.
+                  Search through our collection of AI tools. Results update as
+                  you type.
                 </div>
                 <motion.button
                   className="mr-2 p-3 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-xl hover:shadow-lg transition-all duration-300 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
@@ -134,22 +161,29 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
                   whileTap={{ scale: 0.95 }}
                   aria-label="Execute search query"
                 >
-                  <span className="text-white font-medium hidden sm:block">Search</span>
-                  <ArrowRight className="w-4 h-4 text-white" aria-hidden="true" />
+                  <span className="text-white font-medium hidden sm:block">
+                    Search
+                  </span>
+                  <ArrowRight
+                    className="w-4 h-4 text-white"
+                    aria-hidden="true"
+                  />
                 </motion.button>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Enhanced Stats */}
+        {/* Statistics */}
         <motion.div
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16"
           variants={containerVariants}
           role="region"
           aria-labelledby="stats-heading"
         >
-          <h3 id="stats-heading" className="sr-only">Platform Statistics</h3>
+          <h3 id="stats-heading" className="sr-only">
+            Platform Statistics
+          </h3>
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -158,7 +192,7 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
               whileHover={{
                 scale: 1.05,
                 y: -5,
-                boxShadow: "0 20px 40px rgba(99, 102, 241, 0.15)"
+                boxShadow: "0 20px 40px rgba(99, 102, 241, 0.15)",
               }}
               whileTap={{ scale: 0.95 }}
               role="article"
@@ -179,8 +213,13 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
               >
                 {stat.value}
               </div>
-              <div className="text-sm text-gray-300 font-medium">{stat.label}</div>
-              <div className="absolute inset-0 bg-gradient-to-br from-ai-primary/5 to-ai-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
+              <div className="text-sm text-gray-300 font-medium">
+                {stat.label}
+              </div>
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-ai-primary/5 to-ai-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              />
             </motion.div>
           ))}
         </motion.div>
@@ -192,13 +231,21 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
           role="region"
           aria-labelledby="trust-indicators"
         >
-          <h3 id="trust-indicators" className="sr-only">Trust and Reliability Indicators</h3>
+          <h3 id="trust-indicators" className="sr-only">
+            Trust and Reliability Indicators
+          </h3>
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
+            <div
+              className="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+              aria-hidden="true"
+            />
             <span>50,000+ Users</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Star className="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true" />
+            <Star
+              className="w-4 h-4 text-yellow-400 fill-current"
+              aria-hidden="true"
+            />
             <span>4.8/5 Rating</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -207,10 +254,10 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
           </div>
           <div className="flex items-center space-x-2">
             <Zap className="w-4 h-4 text-blue-400" aria-hidden="true" />
-            <span>Enterprise Ready</span>
+            <span>Production Ready</span>
           </div>
         </motion.div>
       </div>
     </motion.section>
-  )
+  );
 }
