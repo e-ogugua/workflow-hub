@@ -180,7 +180,7 @@ export default function Header({ onSubmitTool }: HeaderProps) {
           aria-label="Mobile navigation"
         >
           <div className="glass rounded-xl p-4 border border-white/10">
-            <nav className="flex flex-col space-y-3" role="menubar">
+            <nav className="flex flex-col space-y-3" aria-label="Mobile navigation menu">
               {[
                 {
                   id: "tools",

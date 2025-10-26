@@ -1,0 +1,11 @@
+[
+  { "id": "all", "name": "All Tools", "icon": "Layers" },
+  { "id": "text", "name": "Text & Writing", "icon": "FileText" },
+  { "id": "image", "name": "Image Generation", "icon": "Image" },
+  { "id": "code", "name": "Code & Development", "icon": "Code" },
+  { "id": "video", "name": "Video & Animation", "icon": "Video" },
+  { "id": "audio", "name": "Audio & Music", "icon": "Music" },
+  { "id": "search", "name": "Search & Research", "icon": "Search" },
+  { "id": "design", "name": "Design & Creativity", "icon": "PenTool" },
+  { "id": "productivity", "name": "Productivity", "icon": "Database" }
+]

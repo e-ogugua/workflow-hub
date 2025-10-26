@@ -25,3 +25,25 @@ Thumbs.db
 # Logs
 *.log
 .vercel
+
+# Testing and analysis reports
+lighthouse*.json
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# Development artifacts
+*.tsbuildinfo
+.vite/
+.turbo/
+
+# Documentation builds
+docs/build/
+docs/.vuepress/dist/

@@ -20,13 +20,14 @@
     "allowJs": true,
     "incremental": true,
     "esModuleInterop": true,
+    "types": ["jest", "@testing-library/jest-dom"],
     "plugins": [
       {
         "name": "next"
       }
     ]
   },
-  "include": ["src", ".next/types/**/*.ts"],
+  "include": ["src", "tests", ".next/types/**/*.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

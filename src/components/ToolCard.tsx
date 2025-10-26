@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, ExternalLink, Plus } from "lucide-react";
-import { Tool } from "../data/tools";
+import { getIconComponent, Tool } from "../data/tools";
 
 interface ToolCardProps {
   tool: Tool;
@@ -15,6 +15,8 @@ export default function ToolCard({
   onAddToComparison,
   isInComparison,
 }: ToolCardProps) {
+  const IconComponent = getIconComponent(tool.icon);
+
   return (
     <motion.div
       className="tool-card bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 transition-all duration-300"
@@ -26,7 +28,7 @@ export default function ToolCard({
         <div
           className={`w-12 h-12 bg-gradient-to-r ${tool.color} rounded-lg flex items-center justify-center`}
         >
-          <tool.icon className="w-6 h-6 text-white" />
+          <IconComponent className="w-6 h-6 text-white" />
         </div>
         <div className="flex items-center space-x-1">
           <Star className="w-4 h-4 text-yellow-400 fill-current" />

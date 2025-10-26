@@ -134,7 +134,7 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
               <h2>Introduction</h2>
               <p className="text-gray-300 leading-relaxed">
                 Welcome to this comprehensive guide on{" "}
-                {content.title.toLowerCase()}. In today's rapidly evolving AI
+                {content.title.toLowerCase()}. In today&apos;s rapidly evolving AI
                 landscape, understanding how to effectively use AI tools is
                 crucial for both personal and professional development. This{" "}
                 {content.type} will walk you through everything you need to know
@@ -143,7 +143,7 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
 
               <h2>Getting Started</h2>
               <p className="text-gray-300 leading-relaxed">
-                Whether you're a complete beginner or looking to enhance your
+                Whether you&apos;re a complete beginner or looking to enhance your
                 existing skills, this section will provide you with the
                 foundational knowledge needed to begin your journey with AI
                 tools effectively.
@@ -172,7 +172,7 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
 
               <h3>Step 2: Exploring the Interface</h3>
               <p className="text-gray-300 leading-relaxed">
-                Once you're logged in, take some time to explore the interface.
+                Once you&apos;re logged in, take some time to explore the interface.
                 Familiarize yourself with the main features, navigation, and
                 available options. Many platforms offer interactive tutorials to
                 help you get started.
@@ -186,7 +186,7 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
 
               <h3>Tip 1: Start Small</h3>
               <p className="text-gray-300 leading-relaxed">
-                Don't try to tackle complex projects right away. Start with
+                Don&apos;t try to tackle complex projects right away. Start with
                 simple tasks and gradually increase complexity as you become
                 more comfortable with the tools.
               </p>
@@ -213,10 +213,10 @@ export default function ContentDetail({ content, onBack }: ContentDetailProps) {
 
               <h2>Conclusion</h2>
               <p className="text-gray-300 leading-relaxed">
-                Congratulations on completing this {content.type}! You've taken
+                Congratulations on completing this {content.type}! You&apos;ve taken
                 an important step toward mastering AI tools. Remember that
                 consistent practice and patience are key to becoming proficient.
-                Keep experimenting, stay curious, and don't hesitate to explore
+                Keep experimenting, stay curious, and don&apos;t hesitate to explore
                 other resources in our Content Hub.
               </p>
 

@@ -8,7 +8,8 @@ import {
   Zap,
   TrendingUp,
 } from "lucide-react";
-import React from "react";
+import React, { useMemo } from "react";
+import { useReducedMotion, createResponsiveVariants, createContainerVariants } from "../hooks/useReducedMotion";
 
 interface HeroProps {
   searchTerm: string;
@@ -20,29 +21,15 @@ interface HeroProps {
   }>;
 }
 
-export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+// PERFORMANCE OPTIMIZATION: Memoize Hero component to prevent unnecessary re-renders
+// This component contains complex animations and is above-the-fold, so memoization is critical
+const Hero = React.memo(({ searchTerm, onSearchChange, stats }: HeroProps) => {
+  // ACCESSIBILITY OPTIMIZATION: Respect user's motion preferences
+  const prefersReducedMotion = useReducedMotion();
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  // PERFORMANCE OPTIMIZATION: Memoize animation variants to prevent recreation on each render
+  const containerVariants = useMemo(() => createContainerVariants(prefersReducedMotion), [prefersReducedMotion]);
+  const itemVariants = useMemo(() => createResponsiveVariants(prefersReducedMotion), [prefersReducedMotion]);
 
   return (
     <motion.section
@@ -58,7 +45,7 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-ai-primary/10 rounded-full blur-3xl animate-pulse" />
         <div
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-ai-secondary/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
+          style={{ animationDelay: prefersReducedMotion ? '0s' : '1s' }}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-ai-primary/5 to-ai-secondary/5 rounded-full blur-3xl" />
       </div>
@@ -74,14 +61,8 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
             variants={itemVariants}
           >
             <div className="relative">
-              <Sparkles
-                className="w-8 h-8 text-ai-accent animate-pulse"
-                aria-hidden="true"
-              />
-              <div
-                className="absolute inset-0 w-8 h-8 text-ai-accent animate-ping opacity-20"
-                aria-hidden="true"
-              >
+              <Sparkles className="w-8 h-8 text-ai-accent animate-pulse" aria-hidden="true" />
+              <div className="absolute inset-0 w-8 h-8 text-ai-accent animate-ping opacity-20" aria-hidden="true">
                 <Sparkles className="w-8 h-8" />
               </div>
             </div>
@@ -95,16 +76,16 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
                 <span className="gradient-text">Innovations</span>
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-full"
-                  initial={{ scaleX: 0 }}
+                  initial={{ scaleX: prefersReducedMotion ? 1 : 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 1 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 1 }}
                   aria-hidden="true"
                 />
               </span>
             </h2>
             <motion.div
               className="relative"
-              whileHover={{ rotate: 15 }}
+              whileHover={prefersReducedMotion ? {} : { rotate: 15 }}
               transition={{ duration: 0.3 }}
               aria-hidden="true"
             >
@@ -117,18 +98,19 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
             variants={itemVariants}
             aria-describedby="hero-description"
           >
-            Unlock the power of AI technology with our curated collection of
-            tools. From creative design to business automation, discover
-            solutions that transform how you work.
+            Discover AI technology with our curated collection of tools.
+            From creative design to business automation, find solutions that transform how you work.
           </motion.p>
           <div id="hero-description" className="sr-only">
-            Workflow Hub showcases AI tools that enhance productivity and
-            creativity across various industries and use cases.
+            Workflow Hub showcases AI tools that enhance productivity and creativity across various industries and use cases.
           </div>
         </motion.div>
 
         {/* Search Bar */}
-        <motion.div className="max-w-3xl mx-auto mb-16" variants={itemVariants}>
+        <motion.div
+          className="max-w-3xl mx-auto mb-16"
+          variants={itemVariants}
+        >
           <div className="relative group">
             <div
               className="absolute inset-0 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition-opacity duration-300"
@@ -146,28 +128,22 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
                   value={searchTerm}
                   onChange={(e) => onSearchChange(e.target.value)}
                   className="flex-1 bg-transparent px-4 py-4 text-white placeholder-gray-400 outline-none text-lg focus:ring-0"
-                  whileFocus={{ scale: 1.02 }}
+                  whileFocus={prefersReducedMotion ? {} : { scale: 1.02 }}
                   aria-label="Search for AI tools by name, description, or category"
                   role="searchbox"
                   aria-describedby="search-help"
                 />
                 <div id="search-help" className="sr-only">
-                  Search through our collection of AI tools. Results update as
-                  you type.
+                  Search through our collection of AI tools. Results update as you type.
                 </div>
                 <motion.button
                   className="mr-2 p-3 bg-gradient-to-r from-ai-primary to-ai-secondary rounded-xl hover:shadow-lg transition-all duration-300 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+                  whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
                   aria-label="Execute search query"
                 >
-                  <span className="text-white font-medium hidden sm:block">
-                    Search
-                  </span>
-                  <ArrowRight
-                    className="w-4 h-4 text-white"
-                    aria-hidden="true"
-                  />
+                  <span className="text-white font-medium hidden sm:block">Search</span>
+                  <ArrowRight className="w-4 h-4 text-white" aria-hidden="true" />
                 </motion.button>
               </div>
             </div>
@@ -181,27 +157,25 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
           role="region"
           aria-labelledby="stats-heading"
         >
-          <h3 id="stats-heading" className="sr-only">
-            Platform Statistics
-          </h3>
+          <h3 id="stats-heading" className="sr-only">Platform Statistics</h3>
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               className="glass-strong rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-primary"
               variants={itemVariants}
-              whileHover={{
+              whileHover={prefersReducedMotion ? {} : {
                 scale: 1.05,
                 y: -5,
-                boxShadow: "0 20px 40px rgba(99, 102, 241, 0.15)",
+                boxShadow: "0 20px 40px rgba(99, 102, 241, 0.15)"
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
               role="article"
               aria-labelledby={`stat-${index}-value`}
               tabIndex={0}
             >
               <motion.div
                 className="flex justify-center mb-4"
-                whileHover={{ rotate: 10 }}
+                whileHover={prefersReducedMotion ? {} : { rotate: 10 }}
                 aria-hidden="true"
               >
                 <stat.icon className="w-10 h-10 text-ai-accent group-hover:text-white transition-colors" />
@@ -213,13 +187,8 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
               >
                 {stat.value}
               </div>
-              <div className="text-sm text-gray-300 font-medium">
-                {stat.label}
-              </div>
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-ai-primary/5 to-ai-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                aria-hidden="true"
-              />
+              <div className="text-sm text-gray-300 font-medium">{stat.label}</div>
+              <div className="absolute inset-0 bg-gradient-to-br from-ai-primary/5 to-ai-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
             </motion.div>
           ))}
         </motion.div>
@@ -231,21 +200,13 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
           role="region"
           aria-labelledby="trust-indicators"
         >
-          <h3 id="trust-indicators" className="sr-only">
-            Trust and Reliability Indicators
-          </h3>
+          <h3 id="trust-indicators" className="sr-only">Trust and Reliability Indicators</h3>
           <div className="flex items-center space-x-2">
-            <div
-              className="w-2 h-2 bg-green-400 rounded-full animate-pulse"
-              aria-hidden="true"
-            />
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true" />
             <span>50,000+ Users</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Star
-              className="w-4 h-4 text-yellow-400 fill-current"
-              aria-hidden="true"
-            />
+            <Star className="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true" />
             <span>4.8/5 Rating</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -260,4 +221,8 @@ export default function Hero({ searchTerm, onSearchChange, stats }: HeroProps) {
       </div>
     </motion.section>
   );
-}
+});
+
+Hero.displayName = 'Hero';
+
+export default Hero;

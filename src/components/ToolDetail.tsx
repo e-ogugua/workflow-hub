@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import React, { useMemo } from "react";
 import {
   ArrowLeft,
   Star,
@@ -9,7 +10,7 @@ import {
   XCircle,
   Target,
 } from "lucide-react";
-import { Tool } from "../data/tools";
+import { getIconComponent, Tool } from "../data/tools";
 
 interface ToolDetailProps {
   tool: Tool;
@@ -18,37 +19,34 @@ interface ToolDetailProps {
   isInComparison?: boolean;
 }
 
-export default function ToolDetail({
-  tool,
-  onBack,
-  onAddToComparison,
-  isInComparison,
-}: ToolDetailProps) {
-  const getDifficultyColor = (difficulty: string) => {
+// PERFORMANCE OPTIMIZATION: Memoize the entire component to prevent unnecessary re-renders
+// This component is heavy with animations and complex UI, so memoization prevents performance issues
+const ToolDetail = React.memo(({ tool, onBack, onAddToComparison, isInComparison }: ToolDetailProps) => {
+  // PERFORMANCE OPTIMIZATION: Memoize expensive calculations
+  const getDifficultyColor = useMemo(() => (difficulty: string) => {
     switch (difficulty) {
-      case "Beginner":
-        return "bg-green-500/20 text-green-400";
-      case "Intermediate":
-        return "bg-yellow-500/20 text-yellow-400";
-      case "Advanced":
-        return "bg-red-500/20 text-red-400";
-      default:
-        return "bg-gray-500/20 text-gray-400";
+      case 'Beginner': return 'text-green-400 bg-green-400/10 border-green-400/20';
+      case 'Intermediate': return 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20';
+      case 'Advanced': return 'text-red-400 bg-red-400/10 border-red-400/20';
+      default: return 'text-gray-400 bg-gray-400/10 border-gray-400/20';
     }
-  };
+  }, []);
 
-  const getPricingColor = (pricing: string) => {
+  const getPricingColor = useMemo(() => (pricing: string) => {
     switch (pricing) {
-      case "Free":
-        return "bg-green-500/20 text-green-400";
-      case "Freemium":
-        return "bg-blue-500/20 text-blue-400";
-      case "Paid":
-        return "bg-orange-500/20 text-orange-400";
-      default:
-        return "bg-gray-500/20 text-gray-400";
+      case 'Free': return 'bg-green-500/20 text-green-400';
+      case 'Freemium': return 'bg-blue-500/20 text-blue-400';
+      case 'Paid': return 'bg-orange-500/20 text-orange-400';
+      default: return 'bg-gray-500/20 text-gray-400';
     }
-  };
+  }, []);
+
+  // PERFORMANCE OPTIMIZATION: Memoize icon component to prevent recreation on each render
+  const IconComponent = useMemo(() => getIconComponent(tool.icon), [tool.icon]);
+
+  // PERFORMANCE OPTIMIZATION: Memoize arrays to prevent recreation on each render
+  const featureList = useMemo(() => tool.features || [], [tool.features]);
+  const useCaseList = useMemo(() => tool.useCases || [], [tool.useCases]);
 
   return (
     <motion.div
@@ -111,7 +109,7 @@ export default function ToolDetail({
             <div
               className={`w-20 h-20 bg-gradient-to-r ${tool.color} rounded-xl flex items-center justify-center`}
             >
-              <tool.icon className="w-10 h-10 text-white" />
+              <IconComponent className="w-10 h-10 text-white" />
             </div>
             <div className="flex-1">
               <h1 className="text-4xl font-bold mb-2">{tool.name}</h1>
@@ -257,7 +255,7 @@ export default function ToolDetail({
           >
             <h2 className="text-2xl font-bold mb-6">Features</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {tool.features.map((feature, index) => (
+              {featureList.map((feature, index) => (
                 <div
                   key={index}
                   className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
@@ -280,7 +278,7 @@ export default function ToolDetail({
           >
             <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {tool.useCases.map((useCase, index) => (
+              {useCaseList.map((useCase, index) => (
                 <div
                   key={index}
                   className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20"
@@ -322,4 +320,8 @@ export default function ToolDetail({
       </div>
     </motion.div>
   );
-}
+});
+
+ToolDetail.displayName = 'ToolDetail';
+
+export default ToolDetail;
