@@ -17,7 +17,9 @@
     "test:coverage": "jest --coverage",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "capture:hero": "node scripts/capture-hero.mjs"
+    "capture:hero": "node scripts/capture-hero.mjs",
+    "deploy:staging": "vercel --prod",
+    "deploy:production": "vercel --prod --confirm"
   },
   "dependencies": {
     "@sentry/react": "^10.22.0",
