@@ -192,13 +192,17 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 Full-stack developer and AI enthusiast specializing in modern web technologies and user experience design.
 
 ### Professional Profiles
-- Portfolio: [e-ogugua-portfolio.vercel.app](https://e-ogugua-portfolio.vercel.app)
+- Portfolio: [ceodev.vercel.app](https://ceodev.vercel.app)
 - LinkedIn: [linkedin.com/in/emmanuel-ogugua](https://linkedin.com/in/emmanuel-ogugua)
 - GitHub: [github.com/e-ogugua](https://github.com/e-ogugua)
 
 ### Contact
 - Email: emmachuka@gmail.com
 - Location: Nigeria
+
+### Ecosystem Links
+- EmmanuelOS: https://github.com/e-ogugua/emmanuelos
+- Portfolio Hub: https://ceodev.vercel.app/
 
 ## Acknowledgments
 
