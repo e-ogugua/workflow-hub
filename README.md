@@ -204,6 +204,17 @@ Full-stack developer and AI enthusiast specializing in modern web technologies a
 - EmmanuelOS: https://github.com/e-ogugua/emmanuelos
 - Portfolio Hub: https://ceodev.vercel.app/
 
+## Screenshots
+
+Add a hero screenshot here for quick visual context.
+
+![Hero Screenshot](./public/screenshot-hero.png)
+
+## Roadmap
+
+Track progress and upcoming work in the Roadmap:
+https://github.com/e-ogugua/workflow-hub/issues?q=is%3Aissue+Roadmap
+
 ## Acknowledgments
 
 ### Technology Partners
@@ -222,3 +233,7 @@ Full-stack developer and AI enthusiast specializing in modern web technologies a
 - Modern SaaS applications for user experience patterns
 - Professional design systems for aesthetic and functionality balance
 - Mobile-first approaches for cross-device compatibility
+
+## Links
+- Releases: https://github.com/e-ogugua/workflow-hub/releases
+- Security Policy: ./SECURITY.md
