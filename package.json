@@ -16,7 +16,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "preview": "vite preview",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "capture:hero": "node scripts/capture-hero.mjs"
   },
   "dependencies": {
     "@sentry/react": "^10.22.0",
