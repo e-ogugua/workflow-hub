@@ -79,7 +79,7 @@ jobs:
     needs: monitor-deployments
     steps:
       - name: Check application uptime
-        uses: LouisBrunner/checks-action@v1
+        uses: LouisBrunner/checks-action@v2
         with:
           tool: "uptime"
           args: "https://${{ github.repository }}.vercel.app" # Replace with your actual domain
