@@ -180,6 +180,7 @@ Complete documentation is available in the [docs/](./docs/) directory:
 - [Development Guide](./docs/development.md) - Setup, architecture, and best practices
 - [API Reference](./docs/api.md) - Component APIs and data structures
 - [Deployment Guide](./docs/deployment.md) - Production deployment instructions
+- [Nick Launches](https://nicklaunches.com/) - Launch platform for builders, AI startups, and SaaS founders to get discovered and earn a permanent dofollow backlink.
 
 ## License
 
