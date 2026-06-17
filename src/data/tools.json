@@ -15,7 +15,11 @@
     "icon": "MessageSquare",
     "color": "from-green-500 to-emerald-600",
     "demoUrl": "https://chat.openai.com",
-    "tags": ["Conversational", "Productive", "2025"],
+    "tags": [
+      "Conversational",
+      "Productive",
+      "2025"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Content creation",
@@ -23,7 +27,10 @@
       "Learning",
       "Business communication"
     ],
-    "alternatives": ["Claude-3", "Gemini-Ultra"],
+    "alternatives": [
+      "Claude-3",
+      "Gemini-Ultra"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -36,11 +43,19 @@
     "rating": 4.8,
     "users": "25M+",
     "pricing": "Paid",
-    "features": ["Ultra-Realistic Images", "Style Consistency", "Commercial Use"],
+    "features": [
+      "Ultra-Realistic Images",
+      "Style Consistency",
+      "Commercial Use"
+    ],
     "icon": "Image",
     "color": "from-purple-500 to-pink-600",
     "demoUrl": "https://midjourney.com",
-    "tags": ["Creative", "Visual", "Trending"],
+    "tags": [
+      "Creative",
+      "Visual",
+      "Trending"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Art creation",
@@ -48,7 +63,10 @@
       "Marketing visuals",
       "NFT creation"
     ],
-    "alternatives": ["DALL-E 4", "Stable Diffusion 3"],
+    "alternatives": [
+      "DALL-E 4",
+      "Stable Diffusion 3"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -61,11 +79,19 @@
     "rating": 4.8,
     "users": "15M+",
     "pricing": "Paid",
-    "features": ["Workspace Context", "Team Sync", "Multi-Model Support"],
+    "features": [
+      "Workspace Context",
+      "Team Sync",
+      "Multi-Model Support"
+    ],
     "icon": "Code",
     "color": "from-blue-500 to-cyan-600",
     "demoUrl": "https://github.com/features/copilot",
-    "tags": ["Development", "Efficient", "Team"],
+    "tags": [
+      "Development",
+      "Efficient",
+      "Team"
+    ],
     "difficulty": "Intermediate",
     "useCases": [
       "Code writing",
@@ -73,7 +99,10 @@
       "Team collaboration",
       "Learning new languages"
     ],
-    "alternatives": ["Cursor AI", "Replit AI"],
+    "alternatives": [
+      "Cursor AI",
+      "Replit AI"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -94,7 +123,11 @@
     "icon": "Video",
     "color": "from-orange-500 to-red-600",
     "demoUrl": "https://synthesia.io",
-    "tags": ["Video", "Professional", "Global"],
+    "tags": [
+      "Video",
+      "Professional",
+      "Global"
+    ],
     "difficulty": "Intermediate",
     "useCases": [
       "Training videos",
@@ -102,7 +135,10 @@
       "Presentations",
       "Accessibility"
     ],
-    "alternatives": ["HeyGen", "D-ID Studio"],
+    "alternatives": [
+      "HeyGen",
+      "D-ID Studio"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -123,7 +159,11 @@
     "icon": "FileText",
     "color": "from-indigo-500 to-purple-600",
     "demoUrl": "https://jasper.ai",
-    "tags": ["Marketing", "Content", "Enterprise"],
+    "tags": [
+      "Marketing",
+      "Content",
+      "Enterprise"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Blog writing",
@@ -131,7 +171,10 @@
       "Email campaigns",
       "Brand consistency"
     ],
-    "alternatives": ["Copy.ai", "Writesonic Enterprise"],
+    "alternatives": [
+      "Copy.ai",
+      "Writesonic Enterprise"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -152,7 +195,11 @@
     "icon": "Palette",
     "color": "from-pink-500 to-rose-600",
     "demoUrl": "https://openai.com/dall-e-4",
-    "tags": ["Advanced", "Safe", "Physics"],
+    "tags": [
+      "Advanced",
+      "Safe",
+      "Physics"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Concept art",
@@ -160,7 +207,10 @@
       "Illustrations",
       "Animation concepts"
     ],
-    "alternatives": ["Midjourney V6", "Imagen 3"],
+    "alternatives": [
+      "Midjourney V6",
+      "Imagen 3"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -173,14 +223,30 @@
     "rating": 4.5,
     "users": "2M+",
     "pricing": "Freemium",
-    "features": ["Full Song Generation", "Vocal Synthesis", "Genre Mastery"],
+    "features": [
+      "Full Song Generation",
+      "Vocal Synthesis",
+      "Genre Mastery"
+    ],
     "icon": "Music",
     "color": "from-teal-500 to-green-600",
     "demoUrl": "https://suno.ai",
-    "tags": ["Audio", "Creative", "Music"],
+    "tags": [
+      "Audio",
+      "Creative",
+      "Music"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Background music", "Podcasts", "Videos", "Creative projects"],
-    "alternatives": ["Udio", "Boomy"],
+    "useCases": [
+      "Background music",
+      "Podcasts",
+      "Videos",
+      "Creative projects"
+    ],
+    "alternatives": [
+      "Udio",
+      "Boomy"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -201,10 +267,22 @@
     "icon": "Search",
     "color": "from-violet-500 to-purple-600",
     "demoUrl": "https://perplexity.ai",
-    "tags": ["Search", "Informative", "Accurate"],
+    "tags": [
+      "Search",
+      "Informative",
+      "Accurate"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Research", "Quick facts", "Learning", "Fact-checking"],
-    "alternatives": ["You.com", "Kagi"],
+    "useCases": [
+      "Research",
+      "Quick facts",
+      "Learning",
+      "Fact-checking"
+    ],
+    "alternatives": [
+      "You.com",
+      "Kagi"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -217,11 +295,19 @@
     "rating": 4.7,
     "users": "15M+",
     "pricing": "Free",
-    "features": ["Open Source", "Custom Models", "Community Plugins"],
+    "features": [
+      "Open Source",
+      "Custom Models",
+      "Community Plugins"
+    ],
     "icon": "Image",
     "color": "from-gray-500 to-gray-700",
     "demoUrl": "https://stability.ai",
-    "tags": ["Open Source", "Flexible", "Community"],
+    "tags": [
+      "Open Source",
+      "Flexible",
+      "Community"
+    ],
     "difficulty": "Advanced",
     "useCases": [
       "Custom AI models",
@@ -229,7 +315,10 @@
       "Art experimentation",
       "Local development"
     ],
-    "alternatives": ["Automatic1111", "ComfyUI"],
+    "alternatives": [
+      "Automatic1111",
+      "ComfyUI"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -250,7 +339,11 @@
     "icon": "Database",
     "color": "from-blue-500 to-indigo-600",
     "demoUrl": "https://notion.so",
-    "tags": ["Productivity", "Integrated", "Workspace"],
+    "tags": [
+      "Productivity",
+      "Integrated",
+      "Workspace"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Note-taking",
@@ -258,7 +351,10 @@
       "Writing",
       "Knowledge base"
     ],
-    "alternatives": ["Roam Research", "Obsidian"],
+    "alternatives": [
+      "Roam Research",
+      "Obsidian"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -271,11 +367,19 @@
     "rating": 4.5,
     "users": "5M+",
     "pricing": "Freemium",
-    "features": ["Code Explanation", "Bug Fixes", "Autonomous Coding"],
+    "features": [
+      "Code Explanation",
+      "Bug Fixes",
+      "Autonomous Coding"
+    ],
     "icon": "Code",
     "color": "from-green-500 to-teal-600",
     "demoUrl": "https://replit.com",
-    "tags": ["Coding", "Educational", "Autonomous"],
+    "tags": [
+      "Coding",
+      "Educational",
+      "Autonomous"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Learning to code",
@@ -283,7 +387,10 @@
       "Debugging",
       "Education"
     ],
-    "alternatives": ["GitHub Copilot X", "CodeWhisperer"],
+    "alternatives": [
+      "GitHub Copilot X",
+      "CodeWhisperer"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -296,14 +403,30 @@
     "rating": 4.8,
     "users": "8M+",
     "pricing": "Freemium",
-    "features": ["Constitutional AI", "Long Context", "Ethical Responses"],
+    "features": [
+      "Constitutional AI",
+      "Long Context",
+      "Ethical Responses"
+    ],
     "icon": "Bot",
     "color": "from-amber-500 to-orange-600",
     "demoUrl": "https://claude.ai",
-    "tags": ["Safe", "Helpful", "Reasoning"],
+    "tags": [
+      "Safe",
+      "Helpful",
+      "Reasoning"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Creative writing", "Analysis", "Conversations", "Research"],
-    "alternatives": ["ChatGPT-5", "Gemini Ultra"],
+    "useCases": [
+      "Creative writing",
+      "Analysis",
+      "Conversations",
+      "Research"
+    ],
+    "alternatives": [
+      "ChatGPT-5",
+      "Gemini Ultra"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -324,10 +447,22 @@
     "icon": "MessageSquare",
     "color": "from-blue-600 to-indigo-700",
     "demoUrl": "https://gemini.google.com",
-    "tags": ["Google", "Creative", "Multimodal"],
+    "tags": [
+      "Google",
+      "Creative",
+      "Multimodal"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Research", "Writing", "Planning", "Creative tasks"],
-    "alternatives": ["ChatGPT-5", "Claude 3.5"],
+    "useCases": [
+      "Research",
+      "Writing",
+      "Planning",
+      "Creative tasks"
+    ],
+    "alternatives": [
+      "ChatGPT-5",
+      "Claude 3.5"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -340,14 +475,30 @@
     "rating": 4.6,
     "users": "3M+",
     "pricing": "Paid",
-    "features": ["Cinematic Quality", "Style Transfer", "Inpainting"],
+    "features": [
+      "Cinematic Quality",
+      "Style Transfer",
+      "Inpainting"
+    ],
     "icon": "Video",
     "color": "from-purple-600 to-pink-700",
     "demoUrl": "https://runwayml.com/gen-3",
-    "tags": ["Video Gen", "Creative", "Cinematic"],
+    "tags": [
+      "Video Gen",
+      "Creative",
+      "Cinematic"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Short clips", "Marketing videos", "Art", "Film production"],
-    "alternatives": ["Pika Labs", "Synthesia"],
+    "useCases": [
+      "Short clips",
+      "Marketing videos",
+      "Art",
+      "Film production"
+    ],
+    "alternatives": [
+      "Pika Labs",
+      "Synthesia"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -360,14 +511,30 @@
     "rating": 4.5,
     "users": "5M+",
     "pricing": "Paid",
-    "features": ["Team Collaboration", "Brand Guidelines", "API Access"],
+    "features": [
+      "Team Collaboration",
+      "Brand Guidelines",
+      "API Access"
+    ],
     "icon": "FileText",
     "color": "from-cyan-500 to-blue-600",
     "demoUrl": "https://copy.ai",
-    "tags": ["Marketing", "Copywriting", "Enterprise"],
+    "tags": [
+      "Marketing",
+      "Copywriting",
+      "Enterprise"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Ads", "Social posts", "Emails", "Team content"],
-    "alternatives": ["Jasper AI Pro", "Writesonic"],
+    "useCases": [
+      "Ads",
+      "Social posts",
+      "Emails",
+      "Team content"
+    ],
+    "alternatives": [
+      "Jasper AI Pro",
+      "Writesonic"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -380,14 +547,29 @@
     "rating": 4.4,
     "users": "150M+",
     "pricing": "Freemium",
-    "features": ["Magic Edit Pro", "Brand Kit AI", "Team Templates"],
+    "features": [
+      "Magic Edit Pro",
+      "Brand Kit AI",
+      "Team Templates"
+    ],
     "icon": "Palette",
     "color": "from-blue-400 to-cyan-500",
     "demoUrl": "https://canva.com/magic-studio",
-    "tags": ["Design", "Easy", "Professional"],
+    "tags": [
+      "Design",
+      "Easy",
+      "Professional"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Social media graphics", "Presentations", "Marketing materials"],
-    "alternatives": ["Adobe Firefly", "Midjourney"],
+    "useCases": [
+      "Social media graphics",
+      "Presentations",
+      "Marketing materials"
+    ],
+    "alternatives": [
+      "Adobe Firefly",
+      "Midjourney"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -400,14 +582,29 @@
     "rating": 4.6,
     "users": "3M+",
     "pricing": "Paid",
-    "features": ["Team Privacy", "Security Scanning", "Multi-IDE Support"],
+    "features": [
+      "Team Privacy",
+      "Security Scanning",
+      "Multi-IDE Support"
+    ],
     "icon": "Code",
     "color": "from-gray-600 to-slate-700",
     "demoUrl": "https://tabnine.com",
-    "tags": ["Coding", "Privacy", "Teams"],
+    "tags": [
+      "Coding",
+      "Privacy",
+      "Teams"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Code completion", "Team coding", "Secure development"],
-    "alternatives": ["GitHub Copilot X", "Kite"],
+    "useCases": [
+      "Code completion",
+      "Team coding",
+      "Secure development"
+    ],
+    "alternatives": [
+      "GitHub Copilot X",
+      "Kite"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -420,14 +617,30 @@
     "rating": 4.7,
     "users": "2M+",
     "pricing": "Freemium",
-    "features": ["Voice Cloning", "Text-based Editing", "Overdub"],
+    "features": [
+      "Voice Cloning",
+      "Text-based Editing",
+      "Overdub"
+    ],
     "icon": "Mic",
     "color": "from-orange-400 to-red-500",
     "demoUrl": "https://descript.com",
-    "tags": ["Audio Editing", "Video", "Voice"],
+    "tags": [
+      "Audio Editing",
+      "Video",
+      "Voice"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Podcasts", "Video editing", "Voice overs", "Transcription"],
-    "alternatives": ["Adobe Podcast", "Riverside"],
+    "useCases": [
+      "Podcasts",
+      "Video editing",
+      "Voice overs",
+      "Transcription"
+    ],
+    "alternatives": [
+      "Adobe Podcast",
+      "Riverside"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -440,11 +653,19 @@
     "rating": 4.5,
     "users": "5M+",
     "pricing": "Freemium",
-    "features": ["Privacy First", "Personalized AI", "No Tracking"],
+    "features": [
+      "Privacy First",
+      "Personalized AI",
+      "No Tracking"
+    ],
     "icon": "Search",
     "color": "from-green-400 to-blue-500",
     "demoUrl": "https://you.com",
-    "tags": ["Privacy", "Search", "Personalized"],
+    "tags": [
+      "Privacy",
+      "Search",
+      "Personalized"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Private search",
@@ -452,7 +673,10 @@
       "Daily queries",
       "Personalization"
     ],
-    "alternatives": ["DuckDuckGo AI", "Perplexity"],
+    "alternatives": [
+      "DuckDuckGo AI",
+      "Perplexity"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -465,14 +689,30 @@
     "rating": 4.6,
     "users": "2M+",
     "pricing": "Freemium",
-    "features": ["AI Tables", "Smart Automations", "Team Intelligence"],
+    "features": [
+      "AI Tables",
+      "Smart Automations",
+      "Team Intelligence"
+    ],
     "icon": "Database",
     "color": "from-slate-600 to-gray-800",
     "demoUrl": "https://coda.io/ai",
-    "tags": ["Workspace", "Automation", "Intelligence"],
+    "tags": [
+      "Workspace",
+      "Automation",
+      "Intelligence"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Project management", "Databases", "Team docs", "Automation"],
-    "alternatives": ["Notion AI", "Airtable AI"],
+    "useCases": [
+      "Project management",
+      "Databases",
+      "Team docs",
+      "Automation"
+    ],
+    "alternatives": [
+      "Notion AI",
+      "Airtable AI"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -485,14 +725,29 @@
     "rating": 4.5,
     "users": "1M+",
     "pricing": "Freemium",
-    "features": ["AI Design", "Code Generation", "Responsive Sites"],
+    "features": [
+      "AI Design",
+      "Code Generation",
+      "Responsive Sites"
+    ],
     "icon": "PenTool",
     "color": "from-purple-400 to-pink-500",
     "demoUrl": "https://framer.com/ai",
-    "tags": ["Design", "Web", "No-Code"],
+    "tags": [
+      "Design",
+      "Web",
+      "No-Code"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Website design", "Prototyping", "No-code development"],
-    "alternatives": ["Webflow AI", "Bubble"],
+    "useCases": [
+      "Website design",
+      "Prototyping",
+      "No-code development"
+    ],
+    "alternatives": [
+      "Webflow AI",
+      "Bubble"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -505,14 +760,30 @@
     "rating": 4.6,
     "users": "50M+",
     "pricing": "Freemium",
-    "features": ["Code Chat", "CI/CD Assistance", "Security Insights"],
+    "features": [
+      "Code Chat",
+      "CI/CD Assistance",
+      "Security Insights"
+    ],
     "icon": "GitBranch",
     "color": "from-orange-500 to-red-600",
     "demoUrl": "https://gitlab.com",
-    "tags": ["DevOps", "Collaboration", "Security"],
+    "tags": [
+      "DevOps",
+      "Collaboration",
+      "Security"
+    ],
     "difficulty": "Advanced",
-    "useCases": ["Code review", "Security", "Team collaboration", "DevOps"],
-    "alternatives": ["GitHub Copilot X", "CodeQL"],
+    "useCases": [
+      "Code review",
+      "Security",
+      "Team collaboration",
+      "DevOps"
+    ],
+    "alternatives": [
+      "GitHub Copilot X",
+      "CodeQL"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -525,14 +796,30 @@
     "rating": 4.8,
     "users": "15M+",
     "pricing": "Paid",
-    "features": ["Mathematical Computing", "Data Analysis", "Expert Knowledge"],
+    "features": [
+      "Mathematical Computing",
+      "Data Analysis",
+      "Expert Knowledge"
+    ],
     "icon": "Calculator",
     "color": "from-red-500 to-orange-600",
     "demoUrl": "https://wolframalpha.com",
-    "tags": ["Knowledge", "Math", "Analytics"],
+    "tags": [
+      "Knowledge",
+      "Math",
+      "Analytics"
+    ],
     "difficulty": "Advanced",
-    "useCases": ["Math problems", "Data analysis", "Research", "Engineering"],
-    "alternatives": ["Symbolab Pro", "Mathway Premium"],
+    "useCases": [
+      "Math problems",
+      "Data analysis",
+      "Research",
+      "Engineering"
+    ],
+    "alternatives": [
+      "Symbolab Pro",
+      "Mathway Premium"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -545,11 +832,19 @@
     "rating": 4.5,
     "users": "3M+",
     "pricing": "Paid",
-    "features": ["Multi-PDF Analysis", "Enterprise Security", "API Integration"],
+    "features": [
+      "Multi-PDF Analysis",
+      "Enterprise Security",
+      "API Integration"
+    ],
     "icon": "FileText",
     "color": "from-green-600 to-teal-700",
     "demoUrl": "https://chatpdf.com",
-    "tags": ["PDF", "Research", "Enterprise"],
+    "tags": [
+      "PDF",
+      "Research",
+      "Enterprise"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Document analysis",
@@ -557,7 +852,10 @@
       "Legal docs",
       "Business intelligence"
     ],
-    "alternatives": ["PDF.ai", "AskYourPDF"],
+    "alternatives": [
+      "PDF.ai",
+      "AskYourPDF"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -570,11 +868,19 @@
     "rating": 4.8,
     "users": "100M+",
     "pricing": "Freemium",
-    "features": ["Batch Processing", "API Access", "High Accuracy"],
+    "features": [
+      "Batch Processing",
+      "API Access",
+      "High Accuracy"
+    ],
     "icon": "Image",
     "color": "from-lime-500 to-green-600",
     "demoUrl": "https://remove.bg",
-    "tags": ["Image Editing", "API", "E-commerce"],
+    "tags": [
+      "Image Editing",
+      "API",
+      "E-commerce"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Photo editing",
@@ -582,7 +888,10 @@
       "Social media",
       "Professional photos"
     ],
-    "alternatives": ["Clipping Magic", "Background Eraser Pro"],
+    "alternatives": [
+      "Clipping Magic",
+      "Background Eraser Pro"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -595,11 +904,19 @@
     "rating": 4.7,
     "users": "50M+",
     "pricing": "Paid",
-    "features": ["Team Style Guide", "Plagiarism Detection", "Brand Tone"],
+    "features": [
+      "Team Style Guide",
+      "Plagiarism Detection",
+      "Brand Tone"
+    ],
     "icon": "FileText",
     "color": "from-blue-500 to-indigo-600",
     "demoUrl": "https://grammarly.com",
-    "tags": ["Writing", "Grammar", "Teams"],
+    "tags": [
+      "Writing",
+      "Grammar",
+      "Teams"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Email writing",
@@ -607,7 +924,10 @@
       "Business documents",
       "Team communication"
     ],
-    "alternatives": ["Hemingway App", "ProWritingAid"],
+    "alternatives": [
+      "Hemingway App",
+      "ProWritingAid"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -628,10 +948,22 @@
     "icon": "Mic",
     "color": "from-purple-500 to-violet-600",
     "demoUrl": "https://otter.ai",
-    "tags": ["Transcription", "Meetings", "Teams"],
+    "tags": [
+      "Transcription",
+      "Meetings",
+      "Teams"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Meeting notes", "Interviews", "Lectures", "Team collaboration"],
-    "alternatives": ["Rev Teams", "Temi Business"],
+    "useCases": [
+      "Meeting notes",
+      "Interviews",
+      "Lectures",
+      "Team collaboration"
+    ],
+    "alternatives": [
+      "Rev Teams",
+      "Temi Business"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -644,11 +976,19 @@
     "rating": 4.5,
     "users": "10M+",
     "pricing": "Freemium",
-    "features": ["Code Generation", "Design Tokens", "Developer Handoff"],
+    "features": [
+      "Code Generation",
+      "Design Tokens",
+      "Developer Handoff"
+    ],
     "icon": "PenTool",
     "color": "from-pink-500 to-rose-600",
     "demoUrl": "https://figma.com/ai",
-    "tags": ["Design", "Collaboration", "Development"],
+    "tags": [
+      "Design",
+      "Collaboration",
+      "Development"
+    ],
     "difficulty": "Intermediate",
     "useCases": [
       "UI/UX design",
@@ -656,7 +996,10 @@
       "Team collaboration",
       "Developer handoff"
     ],
-    "alternatives": ["Sketch", "Adobe XD"],
+    "alternatives": [
+      "Sketch",
+      "Adobe XD"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -669,14 +1012,30 @@
     "rating": 4.8,
     "users": "5M+",
     "pricing": "Free",
-    "features": ["Model Deployment", "Community Spaces", "Collaborative ML"],
+    "features": [
+      "Model Deployment",
+      "Community Spaces",
+      "Collaborative ML"
+    ],
     "icon": "Database",
     "color": "from-yellow-500 to-orange-600",
     "demoUrl": "https://huggingface.co",
-    "tags": ["Open Source", "Community", "ML"],
+    "tags": [
+      "Open Source",
+      "Community",
+      "ML"
+    ],
     "difficulty": "Advanced",
-    "useCases": ["ML models", "Research", "Custom AI", "Open source projects"],
-    "alternatives": ["Replicate", "RunPod"],
+    "useCases": [
+      "ML models",
+      "Research",
+      "Custom AI",
+      "Open source projects"
+    ],
+    "alternatives": [
+      "Replicate",
+      "RunPod"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -689,14 +1048,30 @@
     "rating": 4.8,
     "users": "3M+",
     "pricing": "Paid",
-    "features": ["Voice Cloning", "Emotional Control", "Multi-Language"],
+    "features": [
+      "Voice Cloning",
+      "Emotional Control",
+      "Multi-Language"
+    ],
     "icon": "Mic",
     "color": "from-purple-500 to-pink-600",
     "demoUrl": "https://elevenlabs.io",
-    "tags": ["Voice", "Synthesis", "Professional"],
+    "tags": [
+      "Voice",
+      "Synthesis",
+      "Professional"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Audiobooks", "Videos", "Accessibility", "Content creation"],
-    "alternatives": ["Respeecher", "Play.ht"],
+    "useCases": [
+      "Audiobooks",
+      "Videos",
+      "Accessibility",
+      "Content creation"
+    ],
+    "alternatives": [
+      "Respeecher",
+      "Play.ht"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -709,14 +1084,30 @@
     "rating": 4.6,
     "users": "2M+",
     "pricing": "Freemium",
-    "features": ["AI Narratives", "Interactive Stories", "Data Visualization"],
+    "features": [
+      "AI Narratives",
+      "Interactive Stories",
+      "Data Visualization"
+    ],
     "icon": "BookOpen",
     "color": "from-indigo-500 to-purple-600",
     "demoUrl": "https://tome.app",
-    "tags": ["Presentations", "Stories", "Interactive"],
+    "tags": [
+      "Presentations",
+      "Stories",
+      "Interactive"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Pitch decks", "Reports", "Storytelling", "Data presentations"],
-    "alternatives": ["Gamma", "Beautiful.ai"],
+    "useCases": [
+      "Pitch decks",
+      "Reports",
+      "Storytelling",
+      "Data presentations"
+    ],
+    "alternatives": [
+      "Gamma",
+      "Beautiful.ai"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -729,11 +1120,19 @@
     "rating": 4.7,
     "users": "10M+",
     "pricing": "Paid",
-    "features": ["Commercial Safe", "Adobe Integration", "Brand Consistency"],
+    "features": [
+      "Commercial Safe",
+      "Adobe Integration",
+      "Brand Consistency"
+    ],
     "icon": "Palette",
     "color": "from-red-500 to-orange-600",
     "demoUrl": "https://firefly.adobe.com",
-    "tags": ["Adobe", "Commercial", "Creative"],
+    "tags": [
+      "Adobe",
+      "Commercial",
+      "Creative"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Photo editing",
@@ -741,7 +1140,10 @@
       "Marketing materials",
       "Brand assets"
     ],
-    "alternatives": ["Midjourney V6", "DALL-E 4"],
+    "alternatives": [
+      "Midjourney V6",
+      "DALL-E 4"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -754,14 +1156,29 @@
     "rating": 4.5,
     "users": "2M+",
     "pricing": "Paid",
-    "features": ["AWS Integration", "Enterprise Security", "Multi-Language"],
+    "features": [
+      "AWS Integration",
+      "Enterprise Security",
+      "Multi-Language"
+    ],
     "icon": "Code",
     "color": "from-orange-500 to-red-600",
     "demoUrl": "https://aws.amazon.com/codewhisperer",
-    "tags": ["AWS", "Security", "Enterprise"],
+    "tags": [
+      "AWS",
+      "Security",
+      "Enterprise"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["AWS development", "Secure coding", "Team projects"],
-    "alternatives": ["GitHub Copilot X", "Tabnine Teams"],
+    "useCases": [
+      "AWS development",
+      "Secure coding",
+      "Team projects"
+    ],
+    "alternatives": [
+      "GitHub Copilot X",
+      "Tabnine Teams"
+    ],
     "region": "Global",
     "trending": false,
     "year": 2024
@@ -774,11 +1191,19 @@
     "rating": 4.6,
     "users": "30M+",
     "pricing": "Freemium",
-    "features": ["AI Mind Maps", "Visual Collaboration", "Team Brainstorming"],
+    "features": [
+      "AI Mind Maps",
+      "Visual Collaboration",
+      "Team Brainstorming"
+    ],
     "icon": "PenTool",
     "color": "from-yellow-400 to-orange-500",
     "demoUrl": "https://miro.com/ai",
-    "tags": ["Collaboration", "Brainstorming", "Visual"],
+    "tags": [
+      "Collaboration",
+      "Brainstorming",
+      "Visual"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Team meetings",
@@ -786,7 +1211,10 @@
       "Brainstorming",
       "Strategy"
     ],
-    "alternatives": ["Mural", "Lucidchart AI"],
+    "alternatives": [
+      "Mural",
+      "Lucidchart AI"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -799,14 +1227,30 @@
     "rating": 4.6,
     "users": "2M+",
     "pricing": "Freemium",
-    "features": ["Game Assets", "Concept Art", "Style Consistency"],
+    "features": [
+      "Game Assets",
+      "Concept Art",
+      "Style Consistency"
+    ],
     "icon": "Palette",
     "color": "from-emerald-500 to-green-600",
     "demoUrl": "https://leonardo.ai",
-    "tags": ["Gaming", "Art", "Creative"],
+    "tags": [
+      "Gaming",
+      "Art",
+      "Creative"
+    ],
     "difficulty": "Intermediate",
-    "useCases": ["Game development", "Concept art", "NFTs", "Creative projects"],
-    "alternatives": ["Midjourney V6", "Stable Diffusion XL"],
+    "useCases": [
+      "Game development",
+      "Concept art",
+      "NFTs",
+      "Creative projects"
+    ],
+    "alternatives": [
+      "Midjourney V6",
+      "Stable Diffusion XL"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -819,14 +1263,30 @@
     "rating": 4.4,
     "users": "150M+",
     "pricing": "Free",
-    "features": ["Creative Mode", "Visual Search", "Microsoft Integration"],
+    "features": [
+      "Creative Mode",
+      "Visual Search",
+      "Microsoft Integration"
+    ],
     "icon": "Search",
     "color": "from-blue-600 to-indigo-700",
     "demoUrl": "https://bing.com/create",
-    "tags": ["Microsoft", "Search", "Creative"],
+    "tags": [
+      "Microsoft",
+      "Search",
+      "Creative"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Web search", "Creative tasks", "Research", "Image creation"],
-    "alternatives": ["ChatGPT-5", "Gemini Ultra"],
+    "useCases": [
+      "Web search",
+      "Creative tasks",
+      "Research",
+      "Image creation"
+    ],
+    "alternatives": [
+      "ChatGPT-5",
+      "Gemini Ultra"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -839,14 +1299,30 @@
     "rating": 4.5,
     "users": "1M+",
     "pricing": "Freemium",
-    "features": ["Text-to-Video", "Image-to-Video", "Advanced Styles"],
+    "features": [
+      "Text-to-Video",
+      "Image-to-Video",
+      "Advanced Styles"
+    ],
     "icon": "Video",
     "color": "from-indigo-500 to-purple-600",
     "demoUrl": "https://pika.art",
-    "tags": ["Video Gen", "Creative", "Advanced"],
+    "tags": [
+      "Video Gen",
+      "Creative",
+      "Advanced"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Short videos", "Animations", "Marketing", "Social media"],
-    "alternatives": ["Runway Gen-3", "Synthesia"],
+    "useCases": [
+      "Short videos",
+      "Animations",
+      "Marketing",
+      "Social media"
+    ],
+    "alternatives": [
+      "Runway Gen-3",
+      "Synthesia"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -859,14 +1335,30 @@
     "rating": 4.5,
     "users": "2M+",
     "pricing": "Paid",
-    "features": ["Team Collaboration", "Brand Voice", "Content Calendar"],
+    "features": [
+      "Team Collaboration",
+      "Brand Voice",
+      "Content Calendar"
+    ],
     "icon": "FileText",
     "color": "from-emerald-500 to-green-600",
     "demoUrl": "https://writesonic.com",
-    "tags": ["Content", "Marketing", "Business"],
+    "tags": [
+      "Content",
+      "Marketing",
+      "Business"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Blog articles", "Ads", "Product pages", "Team content"],
-    "alternatives": ["Jasper AI Pro", "Copy.ai Enterprise"],
+    "useCases": [
+      "Blog articles",
+      "Ads",
+      "Product pages",
+      "Team content"
+    ],
+    "alternatives": [
+      "Jasper AI Pro",
+      "Copy.ai Enterprise"
+    ],
     "region": "Global",
     "trending": true,
     "year": 2025
@@ -887,7 +1379,11 @@
     "icon": "Globe",
     "color": "from-green-600 to-yellow-600",
     "demoUrl": "https://africanaihub.com",
-    "tags": ["Local", "Africa", "Community"],
+    "tags": [
+      "Local",
+      "Africa",
+      "Community"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Local business",
@@ -895,7 +1391,10 @@
       "Community building",
       "Cultural content"
     ],
-    "alternatives": ["Local AI tools", "Regional platforms"],
+    "alternatives": [
+      "Local AI tools",
+      "Regional platforms"
+    ],
     "region": "Africa",
     "trending": true,
     "year": 2025
@@ -908,11 +1407,19 @@
     "rating": 4.4,
     "users": "1M+",
     "pricing": "Free",
-    "features": ["Nigerian English", "Local Knowledge", "Cultural Awareness"],
+    "features": [
+      "Nigerian English",
+      "Local Knowledge",
+      "Cultural Awareness"
+    ],
     "icon": "MessageSquare",
     "color": "from-green-500 to-white",
     "demoUrl": "https://nigeria.ai",
-    "tags": ["Local", "Nigeria", "Cultural"],
+    "tags": [
+      "Local",
+      "Nigeria",
+      "Cultural"
+    ],
     "difficulty": "Beginner",
     "useCases": [
       "Local communication",
@@ -920,7 +1427,10 @@
       "Business in Nigeria",
       "Education"
     ],
-    "alternatives": ["ChatGPT", "Local chatbots"],
+    "alternatives": [
+      "ChatGPT",
+      "Local chatbots"
+    ],
     "region": "Africa",
     "trending": true,
     "year": 2025
@@ -941,10 +1451,22 @@
     "icon": "Languages",
     "color": "from-orange-500 to-red-500",
     "demoUrl": "https://africantranslator.ai",
-    "tags": ["Translation", "Africa", "Languages"],
+    "tags": [
+      "Translation",
+      "Africa",
+      "Languages"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Communication", "Education", "Business", "Cultural exchange"],
-    "alternatives": ["Google Translate", "Local translation apps"],
+    "useCases": [
+      "Communication",
+      "Education",
+      "Business",
+      "Cultural exchange"
+    ],
+    "alternatives": [
+      "Google Translate",
+      "Local translation apps"
+    ],
     "region": "Africa",
     "trending": true,
     "year": 2025
@@ -957,16 +1479,69 @@
     "rating": 4.6,
     "users": "800K+",
     "pricing": "Freemium",
-    "features": ["African Rhythms", "Cultural Instruments", "Traditional Styles"],
+    "features": [
+      "African Rhythms",
+      "Cultural Instruments",
+      "Traditional Styles"
+    ],
     "icon": "Music",
     "color": "from-red-500 to-orange-600",
     "demoUrl": "https://africanmusic.ai",
-    "tags": ["Music", "Africa", "Cultural"],
+    "tags": [
+      "Music",
+      "Africa",
+      "Cultural"
+    ],
     "difficulty": "Beginner",
-    "useCases": ["Cultural music", "Events", "Content creation", "Education"],
-    "alternatives": ["Suno AI", "Local music tools"],
+    "useCases": [
+      "Cultural music",
+      "Events",
+      "Content creation",
+      "Education"
+    ],
+    "alternatives": [
+      "Suno AI",
+      "Local music tools"
+    ],
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "Remio",
+    "category": "productivity",
+    "description": "Local-first AI memory and knowledge base desktop app that parses files, webpages, recordings, emails, messages, images, and notes into local indexes and vectors for focused personal and agent context retrieval.",
+    "rating": 4.6,
+    "users": "10K+",
+    "pricing": "Freemium",
+    "features": [
+      "Local Indexes",
+      "Vector Retrieval",
+      "Multi-format Parsing"
+    ],
+    "icon": "Database",
+    "color": "from-slate-600 to-cyan-600",
+    "demoUrl": "https://remio.ai/",
+    "tags": [
+      "Productivity",
+      "Knowledge Base",
+      "Agents"
+    ],
+    "difficulty": "Beginner",
+    "useCases": [
+      "Personal knowledge base",
+      "Agent memory",
+      "Research files",
+      "Context retrieval"
+    ],
+    "alternatives": [
+      "Mem",
+      "Notion AI",
+      "mymind"
+    ],
+    "region": "Global",
+    "trending": true,
+    "year": 2026
   }
 ]
