@@ -968,5 +968,33 @@
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "Roblox GUI Maker",
+    "category": "code",
+    "description": "Free AI-assisted Roblox Studio GUI planner for ScreenGui layouts, HUDs, menus, and Lua UI starter code.",
+    "rating": 4.2,
+    "users": "New tool",
+    "pricing": "Free",
+    "features": [
+      "Roblox ScreenGui planning",
+      "HUD and menu layout ideas",
+      "Lua UI starter-code guidance"
+    ],
+    "icon": "Code",
+    "color": "from-blue-500 to-cyan-600",
+    "demoUrl": "https://robloxguimaker.dev/",
+    "tags": ["Roblox", "Game Dev", "UI Planning"],
+    "difficulty": "Beginner",
+    "useCases": [
+      "Plan Roblox Studio ScreenGui layouts",
+      "Draft HUDs, menus, shops, and inventory screens",
+      "Create Lua UI starter-code ideas"
+    ],
+    "alternatives": ["GitHub Copilot X", "Replit AI Agent", "Tabnine Teams"],
+    "region": "Global",
+    "trending": false,
+    "year": 2026
   }
 ]
