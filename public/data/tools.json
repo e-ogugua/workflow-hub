@@ -968,5 +968,25 @@
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "Tudo",
+    "category": "productivity",
+    "description": "AI task capture and personal planning app for turning quick thoughts into organized next actions",
+    "rating": 4.7,
+    "users": "New",
+    "pricing": "Freemium",
+    "features": ["AI Task Capture", "Personal Planning", "Action Suggestions"],
+    "icon": "CheckSquare",
+    "color": "from-blue-500 to-sky-600",
+    "demoUrl": "https://blynkai.app/tudo/",
+    "tags": ["Productivity", "Tasks", "Planning"],
+    "difficulty": "Beginner",
+    "useCases": ["Task capture", "Daily planning", "Personal organization"],
+    "alternatives": ["Todoist AI", "Notion AI"],
+    "region": "Global",
+    "trending": false,
+    "year": 2026
   }
 ]
