@@ -968,5 +968,25 @@
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "Tudo",
+    "category": "productivity",
+    "description": "AI task capture and personal planning for voice notes, screenshots, and organized to-dos.",
+    "rating": 4.7,
+    "users": "Global",
+    "pricing": "Freemium",
+    "features": ["Voice Capture", "Screenshot Tasks", "Personal Planning"],
+    "icon": "FileText",
+    "color": "from-blue-500 to-cyan-600",
+    "demoUrl": "https://blynkai.app/tudo/",
+    "tags": ["Productivity", "Task Management", "iOS"],
+    "difficulty": "Beginner",
+    "useCases": ["Task capture", "Personal planning", "Voice notes", "Screenshot organization"],
+    "alternatives": ["Todoist", "Notion AI"],
+    "region": "Global",
+    "trending": false,
+    "year": 2026
   }
 ]
