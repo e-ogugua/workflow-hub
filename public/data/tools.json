@@ -968,5 +968,33 @@
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "SaaSCity",
+    "category": "productivity",
+    "description": "Gamified SaaS directory where every listing becomes a building on a live isometric city map",
+    "rating": 4.5,
+    "users": "New",
+    "pricing": "Freemium",
+    "features": [
+      "Live City Map",
+      "Dofollow Backlink",
+      "Weekly Launches"
+    ],
+    "icon": "Building2",
+    "color": "from-blue-500 to-indigo-600",
+    "demoUrl": "https://saascity.io",
+    "tags": ["Directory", "Launch", "SEO"],
+    "difficulty": "Beginner",
+    "useCases": [
+      "Product launches",
+      "SaaS discovery",
+      "Backlink building"
+    ],
+    "alternatives": ["Product Hunt", "SaaSHub"],
+    "region": "Global",
+    "trending": false,
+    "year": 2026
   }
 ]
