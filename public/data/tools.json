@@ -968,5 +968,34 @@
     "region": "Africa",
     "trending": true,
     "year": 2025
+  },
+  {
+    "id": 43,
+    "name": "AI Tools Radar",
+    "category": "search",
+    "description": "AI tools directory and editorial platform for discovering, comparing, and tracking AI products",
+    "rating": 4.7,
+    "users": "Global",
+    "pricing": "Free",
+    "features": [
+      "AI Tools Directory",
+      "Product Discovery",
+      "Daily AI News"
+    ],
+    "icon": "Search",
+    "color": "from-cyan-500 to-blue-600",
+    "demoUrl": "https://aitoolsradar.com/",
+    "tags": ["Directory", "Discovery", "News"],
+    "difficulty": "Beginner",
+    "useCases": [
+      "Discovering AI tools",
+      "Comparing AI products",
+      "Following AI industry updates",
+      "Finding daily AI news"
+    ],
+    "alternatives": ["Futurepedia", "There's An AI For That"],
+    "region": "Global",
+    "trending": true,
+    "year": 2026
   }
 ]
